@@ -1,8 +1,9 @@
 <nav>
     <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-6">
-        <a href="https://flowbite.com/" class="flex items-center">
-            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+        <a href="#" class="flex items-center">
+            <img src="{{ asset('img/logo.png') }}" class="h-8 mr-3" alt="Flowbite Logo" />
+            <span class="self-center text-base font-bold whitespace-nowrap dark:text-white pr-1">LUMINA EKA</span>
+            <span class="self-center text-base font-normal whitespace-nowrap dark:text-white">Optima</span>
         </a>
         <div class="flex md:order-2">
             <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"

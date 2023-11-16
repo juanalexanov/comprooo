@@ -58,6 +58,15 @@ nav{
     background: linear-gradient(to top, #1111117d, transparent);
 } */
 
+.bg-carousel-hero{
+    background-image: url('../img/carousel2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* i want to shadow my background image */
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.725);
+
+}
 
 .listkartu:hover .boxx{
     opacity: 0.2;
@@ -72,6 +81,7 @@ nav{
 
 /**********************************TESTIMONIAL INDEXTOK*******************************/
 .blogs{
+    margin-top: 30vh;
     height: 65vh;
 }
 
