@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', [SiteController::class,'index']);
+
+Route::get('/login',function(){
+    return view('login');
+});
+Route::post('/login',[SiteController::class,'form_login']);
+
+Route::prefix('/admin')->group(function () {
+    Route::prefix('cms')->group(function () {
+        Route::prefix('carousel')->group(function () {
+            Route::get('/', [SiteController::class, 'showCarousel']);
+            Route::post('/create',[SiteController::class,'createCarousel']);
+            Route::post('/update',[SiteController::class,'updateCarousel']);
+            Route::post('/delete',[SiteController::class,'deleteCarousel']);
+        });
+    });
+    Route::get('/', function () {
+        return view('admin');
+    });
 });
