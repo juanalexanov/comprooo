@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aboutus;
 use App\Models\Card;
 use App\Models\Carousel;
 use App\Models\Contact;
@@ -20,6 +21,12 @@ class SiteController extends Controller
     public function getPhotoCard($id)
     {
         $data = Card::where('id',$id)->first();
+        return response()->file(storage_path('/app/'.$data->url_image));
+    }
+
+    public function getPhotoAboutus($id)
+    {
+        $data = Aboutus::where('id',$id)->first();
         return response()->file(storage_path('/app/'.$data->url_image));
     }
 
@@ -174,6 +181,62 @@ class SiteController extends Controller
 
     public function deleteContact($id){
         Contact::destroy($id);
+        return redirect()->back()->with('success','Data berhasil dihapus');
+    }
+
+
+
+
+
+    public function showAboutus(){
+        $dataaboutus = Aboutus::get();
+        foreach ($dataaboutus as $key) {
+            $key->url_image = env('APP_URL').'/carousel/'.$key->id;
+        }
+
+        return view('admin_utility_aboutus',compact('dataaboutus'));
+    }
+
+    public function createAboutus(Request $request){
+        $input = $request->all();
+        $count = Aboutus::max('id')+1;
+        if($request->hasFile('imagefile')){
+            $saveFile = 'aboutus_'.$count.'.jpg';
+            $path = $request->file('imagefile')->storeAs('/public/Aboutus', $saveFile);
+        }
+        Aboutus::create([
+            'url_image' => $path,
+            'title' => $request->title,
+            'description1' => $request->desc1,
+            'description2' => $request->desc2,
+            'section1' => $request->sec1,
+            'section2' => $request->sec2,
+            'section3' => $request->sec3,
+        ]);
+        return redirect()->back();
+    }
+
+    public function updateAboutus(Request $request, $id){
+        $data = Aboutus::find($id);
+        // dd($request->hasFile('imagefilemodal'));
+        if($request->hasFile('imagefilemodal')){
+            $saveFile = 'aboutus_'.$id.'.jpg';
+            $path = $request->file('imagefilemodal')->storeAs('/public/Aboutus', $saveFile);
+            $data->url_image = $path;
+        }
+
+        $data->title = $request->titlemodal;
+        $data->description1 = $request->desc1modal;
+        $data->description2 = $request->desc2modal;
+        $data->section1 = $request->sec1modal;
+        $data->section2 = $request->sec2modal;
+        $data->section3 = $request->sec3modal;
+        $data->save();
+        return redirect()->back()->with('success','Data berhasil diubah');
+    }
+
+    public function deleteAboutus($id){
+        Aboutus::destroy($id);
         return redirect()->back()->with('success','Data berhasil dihapus');
     }
 }
