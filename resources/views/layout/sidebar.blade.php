@@ -58,6 +58,7 @@
                 <a class="collapse-item" href="{{ url('/admin/cms/card') }}">Edit Our Product</a>
                 <a class="collapse-item" href="utilities-animation.html">Edit Our Service</a>
                 <a class="collapse-item" href="utilities-animation.html">Edit Our Work</a>
+                <a class="collapse-item" href="{{ url('/admin/cms/contact') }}">Edit Contact</a>
             </div>
         </div>
     </li>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lumina Admin - Edit Card</title>
+    <title>Lumina Admin - Edit Contact</title>
 
     <!-- Custom fonts for this template-->
     {{-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> --}}
@@ -250,7 +250,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Edit Card</h1>
+                    <h1 class="h3 mb-1 text-gray-800">Edit Contact</h1>
                     {{-- <p class="mb-4">Bootstrap's default utility classes can be found on the official <a
                             href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities
                         below were created to extend this theme past the default utility classes built into Bootstrap's
@@ -262,22 +262,22 @@
                             <div class="card">
                                 <div class="card-body">
                                     <header>
-                                        <h3>Add Card</h3>
+                                        <h3>Add Contact</h3>
                                     </header>
                                     <hr style="margin: 1rem -1rem;" />
-                                    <form action="/admin/cms/card/create" method="post" enctype="multipart/form-data">
+                                    <form action="/admin/cms/contact/create" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="imagefile" class="form-label">File</label>
-                                            <input type="file" class="form-control" name="imagefile">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="text" class="form-control" name="email">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="titlecarousel" class="form-label">Title</label>
-                                            <input type="text" class="form-control" name="titlecard">
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" class="form-control" name="address">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="desccarousel">Description</label>
-                                            <textarea class="form-control" rows="3" name="desccard"></textarea>
+                                            <label for="phone">Phone</label>
+                                            <input type="text" class="form-control" name="phone">
                                         </div>
                                         <div class="mb-3 footer text-end">
                                             <button type="submit" class="btn btn-primary">Create</button>
@@ -288,7 +288,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <header>
-                                        <h3>Card</h3>
+                                        <h3>Contact</h3>
                                     </header>
                                     <hr style="margin: 1rem -1rem;" />
                                     <div class="table-responsive">
@@ -297,24 +297,24 @@
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
-                                                    <th class="text-center">Image</th>
-                                                    <th class="text-center">Title</th>
-                                                    <th class="text-center">Description</th>
+                                                    <th class="text-center">Email</th>
+                                                    <th class="text-center">Address</th>
+                                                    <th class="text-center">Phone</th>
                                                     <th class="text-center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($datacard as $item)
+                                                @foreach ($datacontact as $item)
                                                     <tr id = "{{$item->id}}">
                                                         <td>{{$loop->index+1}}</td>
-                                                        <td><img src="{{$item->url_image}}" alt="" class="w-100 h-100"></td>
-                                                        <td class="text-center">{{ $item->title }}</td>
-                                                        <td class="text-center">{{ $item->description }}</td>
+                                                        <td class="text-center">{{ $item->email }}</td>
+                                                        <td class="text-center">{{ $item->address }}</td>
+                                                        <td class="text-center">{{ $item->phone }}</td>
                                                         <td class="text-center">
                                                             <button  class="btn btn-info btn-circle displayCarouselDetail">
                                                                 <i class="fas fa-info-circle"></i>
                                                             </button>
-                                                            <a href="/admin/cms/card/delete/{{$item->id}}" class="btn btn-danger btn-circle">
+                                                            <a href="/admin/cms/contact/delete/{{$item->id}}" class="btn btn-danger btn-circle">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
@@ -350,16 +350,16 @@
                                     <input type="text" class="form-control" name="index" id = "db-index">
                                 </div> --}}
                                 <div class="mb-3">
-                                    <label for="imagefile" class="form-label">File</label>
-                                    <input type="file" class="form-control" name="imagefilemodal">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" class="form-control" name="emailmodal" id="db-email">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" class="form-control" name="titlecardmodal" id = "db-title">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" name="addressmodal" id = "db-address">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <input type="text" class="form-control" name="desccardmodal" id = "db-description">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="text" class="form-control" name="phonemodal" id = "db-phone">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -422,11 +422,11 @@
     <script>
         $('.displayCarouselDetail').on('click', function(){
         var temp = $(this).closest('tr').children();
-        $('#form-update-displaybanner').prop('action',"/admin/cms/card/update/"+$(this).closest('tr').attr('id'));
+        $('#form-update-displaybanner').prop('action',"/admin/cms/contact/update/"+$(this).closest('tr').attr('id'));
 
-
-        $('#db-title').val(temp.eq(2).html());
-        $('#db-description').val(temp.eq(3).html());
+        $('#db-email').val(temp.eq(1).html());
+        $('#db-address').val(temp.eq(2).html());
+        $('#db-phone').val(temp.eq(3).html());
         $('#modal-displayedit').modal('show');
     });
     </script>

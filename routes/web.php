@@ -22,6 +22,7 @@ Route::get('/login',function(){
 Route::post('/login',[SiteController::class,'form_login']);
 
 Route::get('/carousel/{id}',[SiteController::class,'getPhotoCarousel']);
+Route::get('/carousel/{id}',[SiteController::class,'getPhotoCard']);
 
 Route::prefix('admin')->group(function () {
     Route::prefix('cms')->group(function () {
@@ -34,8 +35,14 @@ Route::prefix('admin')->group(function () {
         Route::prefix('card')->group(function () {
             Route::get('/', [SiteController::class, 'showCard']);
             Route::post('/create',[SiteController::class,'createCard']);
-            Route::post('/update',[SiteController::class,'updateCard']);
-            Route::get('/delete',[SiteController::class,'deleteCard']);
+            Route::post('/update/{id}',[SiteController::class,'updateCard']);
+            Route::get('/delete/{id}',[SiteController::class,'deleteCard']);
+        });
+        Route::prefix('contact')->group(function () {
+            Route::get('/', [SiteController::class, 'showContact']);
+            Route::post('/create',[SiteController::class,'createContact']);
+            Route::post('/update/{id}',[SiteController::class,'updateContact']);
+            Route::get('/delete/{id}',[SiteController::class,'deleteContact']);
         });
     });
     Route::get('/', function () {
