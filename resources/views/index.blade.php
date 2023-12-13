@@ -23,123 +23,184 @@
     @include('layout.navbar')
 
     <!-- test123 -->
-    <div id="carouselExampleCaptions" class="relative" data-te-carousel-init data-te-ride="carousel">
-        <!--Carousel indicators-->
-        <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
-            data-te-carousel-indicators>
-            <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="0"
-                data-te-carousel-active
-                class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="1"
-                class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                aria-label="Slide 2"></button>
-            <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="2"
-                class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                aria-label="Slide 3"></button>
-        </div>
-
+    <div id="carouselExampleControls" class="relative" data-te-carousel-init data-te-ride="carousel">
         <!--Carousel items-->
         <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-            <!--First item-->
-
             <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                 data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                <div class="bg-carousel-hero" style="background-image: url('{{ asset('img/carousel2.jpg') }}')">
-                {{-- <div class="bg-carousel-hero" style="background-image: url('{{ $e->url_image }}')"> --}}
-                    <div class="relative isolate px-6 pt-14 lg:px-8">
-                        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-                            aria-hidden="true">
-                            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-                            </div>
-                        </div>
-                        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                            <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-                                <div
-                                    class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                                    Announcing our next round of funding. <a href="#"
-                                        class="font-semibold text-indigo-600"><span class="absolute inset-0"
-                                            aria-hidden="true"></span>Read more <span
-                                            aria-hidden="true">&rarr;</span></a>
+                @foreach ($datacarousel as $e)
+                    <!--First item-->
+                    @if ($e->id == 1)
+                        <div class="bg-carousel-hero" style="background-image: url('{{ $e->url_image }}')">
+                            <div class="relative isolate px-6 pt-14 lg:px-8">
+                                <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                                    aria-hidden="true">
+                                    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                                    </div>
+                                </div>
+                                <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+                                    <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                                        <div
+                                            class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                                            Announcing our next round of funding. <a href="#"
+                                                class="font-semibold text-indigo-600"><span class="absolute inset-0"
+                                                    aria-hidden="true"></span>Read more <span
+                                                    aria-hidden="true">&rarr;</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                                            {{ $e->title }}</h1>
+                                        <p class="mt-6 text-md leading-7 text-white">{{ $e->description }}</p>
+                                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                                            <a href="#"
+                                                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                                                started</a>
+                                            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn
+                                                more
+                                                <span aria-hidden="true">→</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                                    aria-hidden="true">
+                                    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">d</h1>
-                                <p class="mt-6 text-md leading-7 text-white">d</p>
-                                <div class="mt-10 flex items-center justify-center gap-x-6">
-                                    <a href="#"
-                                        class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
-                                        started</a>
-                                    <a href="#" class="text-sm font-semibold leading-6 text-white">Learn more
-                                        <span aria-hidden="true">→</span></a>
-                                </div>
-                            </div>
                         </div>
-                        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-                            aria-hidden="true">
-                            <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+            @endif
+            @endforeach
+            @foreach ($datacarousel as $e)
+                <!--Second item-->
+                @if ($e->id == 2)
+                    <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                        data-te-carousel-item>
+                        <div class="bg-carousel-hero" style="background-image: url('{{ $e->url_image }}')">
+
+                            <div class="relative isolate px-6 pt-14 lg:px-8">
+                                <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                                    aria-hidden="true">
+                                    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                                    </div>
+                                </div>
+                                <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+                                    <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                                        <div
+                                            class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                                            Announcing our next round of funding. <a href="#"
+                                                class="font-semibold text-indigo-600"><span class="absolute inset-0"
+                                                    aria-hidden="true"></span>Read more <span
+                                                    aria-hidden="true">&rarr;</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                                            {{ $e->title }}</h1>
+                                        <p class="mt-6 text-md leading-7 text-white">{{ $e->description }}</p>
+                                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                                            <a href="#"
+                                                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                                                started</a>
+                                            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn
+                                                more
+                                                <span aria-hidden="true">→</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                                    aria-hidden="true">
+                                    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endif
+            @endforeach
+            @foreach ($datacarousel as $e)
+                <!--Third item-->
+                @if ($e->id == 3)
+                    <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                        data-te-carousel-item>
+                        <div class="bg-carousel-hero" style="background-image: url('{{ $e->url_image }}')">
 
-
-            <!--Second item-->
-            <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-            data-te-carousel-item style="backface-visibility: hidden">
-                <img src="{{ asset('img/carousel1.jpg') }}" class="block w-full"
-                    alt="..." />
-                <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                    <h5 class="text-xl">cokcoko</h5>
-                    <p>
-                        cokcokcok
-                    </p>
-                </div>
-            </div>
-
-            <!--Third item-->
-            <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-                data-te-carousel-item style="backface-visibility: hidden">
-                <img src="{{ asset('img/carousel1.jpg') }}" class="block w-full"
-                    alt="..." />
-                <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                    <h5 class="text-xl">Third slide label</h5>
-                    <p>
-                        Some representative placeholder content for the third slide.
-                    </p>
-                </div>
-            </div>
+                            <div class="relative isolate px-6 pt-14 lg:px-8">
+                                <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                                    aria-hidden="true">
+                                    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                                    </div>
+                                </div>
+                                <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+                                    <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                                        <div
+                                            class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                                            Announcing our next round of funding. <a href="#"
+                                                class="font-semibold text-indigo-600"><span class="absolute inset-0"
+                                                    aria-hidden="true"></span>Read more <span
+                                                    aria-hidden="true">&rarr;</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                                            {{ $e->title }}</h1>
+                                        <p class="mt-6 text-md leading-7 text-white">{{ $e->description }}</p>
+                                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                                            <a href="#"
+                                                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                                                started</a>
+                                            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn
+                                                more
+                                                <span aria-hidden="true">→</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                                    aria-hidden="true">
+                                    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
+    </div>
 
-        <!--Carousel controls - prev item-->
-        <button
-            class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-            type="button" data-te-target="#carouselExampleCaptions" data-te-slide="prev">
-            <span class="inline-block h-8 w-8">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-            </span>
-            <span
-                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
-        </button>
-        <!--Carousel controls - next item-->
-        <button
-            class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-            type="button" data-te-target="#carouselExampleCaptions" data-te-slide="next">
-            <span class="inline-block h-8 w-8">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </span>
-            <span
-                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
-        </button>
+    <!--Carousel controls - prev item-->
+    <button
+        class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+        type="button" data-te-target="#carouselExampleControls" data-te-slide="prev">
+        <span class="inline-block h-8 w-8">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+        </span>
+        <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
+    </button>
+    <!--Carousel controls - next item-->
+    <button
+        class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+        type="button" data-te-target="#carouselExampleControls" data-te-slide="next">
+        <span class="inline-block h-8 w-8">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+        </span>
+        <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
+    </button>
     </div>
 
     <br>
@@ -149,61 +210,61 @@
     <div class="overflow-hidden bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             @foreach ($dataaboutus as $e)
-            <div
-                class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-                <div class="lg:pr-8 lg:pt-4">
-                    <div class="lg:max-w-lg">
-                        <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">About Us</h2>
-                        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $e->title }}</p>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">{{ $e->description1 }}</p>
-                        <p class="mt-2 text-md leading-8 text-gray-500">{{ $e->description2 }}</p>
-                        <dl class="mt-5 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-                            <div class="relative pl-9">
-                                <dt class="inline font-semibold text-gray-900">
-                                    <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20"
-                                        fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    {{ $e->section1 }}
-                                </dt>
-                                <dd class="inline"></dd>
-                            </div>
-                            <div class="relative pl-9">
-                                <dt class="inline font-semibold text-gray-900">
-                                    <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20"
-                                        fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    {{ $e->section2 }}
-                                </dt>
-                                <dd class="inline"></dd>
-                            </div>
-                            <div class="relative pl-9">
-                                <dt class="inline font-semibold text-gray-900">
-                                    <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20"
-                                        fill="currentColor" aria-hidden="true">
-                                        <path
-                                            d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
-                                        <path fill-rule="evenodd"
-                                            d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    {{ $e->section3 }}
-                                </dt>
-                                <dd class="inline"></dd>
-                            </div>
-                        </dl>
+                <div
+                    class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+                    <div class="lg:pr-8 lg:pt-4">
+                        <div class="lg:max-w-lg">
+                            <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">About Us</h2>
+                            <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                                {{ $e->title }}</p>
+                            <p class="mt-6 text-lg leading-8 text-gray-600">{{ $e->description1 }}</p>
+                            <p class="mt-2 text-md leading-8 text-gray-500">{{ $e->description2 }}</p>
+                            <dl class="mt-5 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                                <div class="relative pl-9">
+                                    <dt class="inline font-semibold text-gray-900">
+                                        <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20"
+                                            fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        {{ $e->section1 }}
+                                    </dt>
+                                    <dd class="inline"></dd>
+                                </div>
+                                <div class="relative pl-9">
+                                    <dt class="inline font-semibold text-gray-900">
+                                        <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20"
+                                            fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        {{ $e->section2 }}
+                                    </dt>
+                                    <dd class="inline"></dd>
+                                </div>
+                                <div class="relative pl-9">
+                                    <dt class="inline font-semibold text-gray-900">
+                                        <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20"
+                                            fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
+                                            <path fill-rule="evenodd"
+                                                d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        {{ $e->section3 }}
+                                    </dt>
+                                    <dd class="inline"></dd>
+                                </div>
+                            </dl>
+                        </div>
                     </div>
+                    <img src="{{ $e->url_image }}" alt="Product screenshot"
+                        class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
+                        width="2432" height="1442">
                 </div>
-                <img src="{{ $e->url_image }}"
-                    alt="Product screenshot"
-                    class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-                    width="2432" height="1442">
-            </div>
             @endforeach
         </div>
     </div>
@@ -221,20 +282,19 @@
         <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
         <div class="mt-11 grid md:grid-cols-4 gap-4">
             @foreach ($datacard as $e)
-            <!-- Card 1 -->
-            <div class="boxx bg-gray shadow-xl overflow-hidden">
-                <img src="{{ $e->url_image }}" alt="Featured insight"
-                    class="w-full h-96 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2 text-slate-50">{{ $e->title }}</h3>
-                    <p class="text-slate-300 text-base">
-                        {{ $e->description }}
-                    </p>
-                    <div class="mt-4">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Read more</a>
+                <!-- Card 1 -->
+                <div class="boxx bg-gray shadow-xl overflow-hidden">
+                    <img src="{{ $e->url_image }}" alt="Featured insight" class="w-full h-96 object-cover" />
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2 text-slate-50">{{ $e->title }}</h3>
+                        <p class="text-slate-300 text-base">
+                            {{ $e->description }}
+                        </p>
+                        <div class="mt-4">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Read more</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
@@ -243,110 +303,110 @@
 
     <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
         @foreach ($dataourservices as $e)
-        <img src="{{ $e->url_image }}"
-            alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
-        <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
-            aria-hidden="true">
-            <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            <img src="{{ $e->url_image }}" alt=""
+                class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
+            <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
+                aria-hidden="true">
+                <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
             </div>
-        </div>
-        <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-            aria-hidden="true">
-            <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
+                aria-hidden="true">
+                <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
             </div>
-        </div>
-        <div class="pembatas mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:mx-0">
-                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl italic">Our Services</h2>
-                <p class="mt-6 text-lg leading-8 text-gray-300">{{ $e->title }}</p>
-            </div>
-            <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-                {{-- <div
+            <div class="pembatas mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl italic">Our Services</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">{{ $e->title }}</p>
+                </div>
+                <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+                    {{-- <div
                     class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
                     <a href="#">Open roles <span aria-hidden="true">&rarr;</span></a>
                     <a href="#">Internship program <span aria-hidden="true">&rarr;</span></a>
                     <a href="#">Our values <span aria-hidden="true">&rarr;</span></a>
                     <a href="#">Meet our leadership <span aria-hidden="true">&rarr;</span></a>
                 </div> --}}
-                <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-                    <div class="relative pl-16">
-                        {{-- <div class="flex flex-col-reverse">
+                    <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="relative pl-16">
+                            {{-- <div class="flex flex-col-reverse">
                             <dt class="text-base leading-7 text-gray-300">Layanan IT berbasis cloud</dt>
                             <dd class="text-2xl font-bold leading-9 tracking-tight text-white">Unlimited</dd>
                         </div> --}}
-                        <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-6 h-6">
-                                    <path fill-rule="evenodd"
-                                        d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            {{ $e->section1title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section1description }}</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-6 h-6">
-                                    <path
-                                        d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
-                                </svg>
-                            </div>
-                            {{ $e->section2title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section2description }}</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg viewBox="-6.72 -6.72 37.44 37.44" xmlns="http://www.w3.org/2000/svg"
-                                    fill="#ffff" stroke="#ffff" stroke-width="0.00024000000000000003">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke="#CCCCCC" stroke-width="0.048"></g>
-                                    <g id="SVGRepo_iconCarrier">
+                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-6 h-6">
+                                        <path fill-rule="evenodd"
+                                            d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                {{ $e->section1title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section1description }}</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-6 h-6">
                                         <path
-                                            d="M23 1v18h-3v-1h2V2H2v16h8v1H1V1zm-7 2H8v1h8zm-2 3V5h-4v1zm-7 5H3v1h4zm0 2H3v1h4zm-4 3h2v-1H3zm14-3a2 2 0 1 1-2-2 2.002 2.002 0 0 1 2 2zm-1 0a1 1 0 1 0-1 1 1.001 1.001 0 0 0 1-1zm.002-4.293a.965.965 0 0 0 1.32.55 1.08 1.08 0 0 1 1.213.207 1.066 1.066 0 0 1 .21 1.21.966.966 0 0 0 .548 1.324 1.064 1.064 0 0 1 0 2.004.965.965 0 0 0-.549 1.323A1.05 1.05 0 0 1 18 16.816v7.046l-3-2.538-3 2.538v-7.046a1.05 1.05 0 0 1-.744-1.49.965.965 0 0 0-.549-1.324 1.064 1.064 0 0 1 0-2.004.966.966 0 0 0 .549-1.324 1.066 1.066 0 0 1 .209-1.21 1.08 1.08 0 0 1 1.212-.206.965.965 0 0 0 1.32-.551 1.064 1.064 0 0 1 2.005 0zm.998 13v-5.04a.93.93 0 0 0-.998.625 1.064 1.064 0 0 1-2.004 0 .93.93 0 0 0-.998-.625v5.039l2-1.692zm-1.94-4.749a1.967 1.967 0 0 1 1.853-1.308 2.12 2.12 0 0 1 .87.197l.058-.091a1.964 1.964 0 0 1 1.116-2.695v-.122a1.966 1.966 0 0 1-1.116-2.695l-.087-.084a1.965 1.965 0 0 1-2.694-1.117h-.12a1.965 1.965 0 0 1-2.694 1.117l-.087.084a1.966 1.966 0 0 1-1.116 2.695v.122a1.964 1.964 0 0 1 1.116 2.695l.058.09a2.12 2.12 0 0 1 .87-.196 1.967 1.967 0 0 1 1.853 1.308L15 17z">
-                                        </path>
-                                        <path fill="none" d="M0 0h24v24H0z"></path>
-                                    </g>
-                                </svg>
-                            </div>
-                            {{ $e->section3title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section3description }}</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        {{-- <div class="flex flex-col-reverse">
+                                            d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
+                                    </svg>
+                                </div>
+                                {{ $e->section2title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section2description }}</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg viewBox="-6.72 -6.72 37.44 37.44" xmlns="http://www.w3.org/2000/svg"
+                                        fill="#ffff" stroke="#ffff" stroke-width="0.00024000000000000003">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke="#CCCCCC" stroke-width="0.048"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M23 1v18h-3v-1h2V2H2v16h8v1H1V1zm-7 2H8v1h8zm-2 3V5h-4v1zm-7 5H3v1h4zm0 2H3v1h4zm-4 3h2v-1H3zm14-3a2 2 0 1 1-2-2 2.002 2.002 0 0 1 2 2zm-1 0a1 1 0 1 0-1 1 1.001 1.001 0 0 0 1-1zm.002-4.293a.965.965 0 0 0 1.32.55 1.08 1.08 0 0 1 1.213.207 1.066 1.066 0 0 1 .21 1.21.966.966 0 0 0 .548 1.324 1.064 1.064 0 0 1 0 2.004.965.965 0 0 0-.549 1.323A1.05 1.05 0 0 1 18 16.816v7.046l-3-2.538-3 2.538v-7.046a1.05 1.05 0 0 1-.744-1.49.965.965 0 0 0-.549-1.324 1.064 1.064 0 0 1 0-2.004.966.966 0 0 0 .549-1.324 1.066 1.066 0 0 1 .209-1.21 1.08 1.08 0 0 1 1.212-.206.965.965 0 0 0 1.32-.551 1.064 1.064 0 0 1 2.005 0zm.998 13v-5.04a.93.93 0 0 0-.998.625 1.064 1.064 0 0 1-2.004 0 .93.93 0 0 0-.998-.625v5.039l2-1.692zm-1.94-4.749a1.967 1.967 0 0 1 1.853-1.308 2.12 2.12 0 0 1 .87.197l.058-.091a1.964 1.964 0 0 1 1.116-2.695v-.122a1.966 1.966 0 0 1-1.116-2.695l-.087-.084a1.965 1.965 0 0 1-2.694-1.117h-.12a1.965 1.965 0 0 1-2.694 1.117l-.087.084a1.966 1.966 0 0 1-1.116 2.695v.122a1.964 1.964 0 0 1 1.116 2.695l.058.09a2.12 2.12 0 0 1 .87-.196 1.967 1.967 0 0 1 1.853 1.308L15 17z">
+                                            </path>
+                                            <path fill="none" d="M0 0h24v24H0z"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                {{ $e->section3title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section3description }}</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            {{-- <div class="flex flex-col-reverse">
                             <dt class="text-base leading-7 text-gray-300">Layanan IT berbasis cloud</dt>
                             <dd class="text-2xl font-bold leading-9 tracking-tight text-white">Unlimited</dd>
                         </div> --}}
-                        <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-6 h-6">
-                                    <path fill-rule="evenodd"
-                                        d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            {{ $e->section4title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section4description }}</dd>
-                    </div>
-                </dl>
+                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-6 h-6">
+                                        <path fill-rule="evenodd"
+                                            d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                {{ $e->section4title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section4description }}</dd>
+                        </div>
+                    </dl>
+                </div>
             </div>
-        </div>
         @endforeach
     </div>
 
@@ -357,67 +417,78 @@
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             @foreach ($dataourwork as $e)
-            <div class="mx-auto max-w-2xl lg:text-center">
-                <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">Our Work</h2>
-                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $e->title }}</p>
-                <p class="mt-6 text-lg leading-8 text-gray-600">{{ $e->titledescription }}</p>
-            </div>
-            <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-                <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-                    <div class="relative pl-16">
-                        <dt class="text-base font-semibold leading-7 text-gray-900">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-white">
-                                    <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            {{ $e->section1title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section1description }}</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-base font-semibold leading-7 text-gray-900">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-white">
-                                    <path d="M11.584 2.376a.75.75 0 01.832 0l9 6a.75.75 0 11-.832 1.248L12 3.901 3.416 9.624a.75.75 0 01-.832-1.248l9-6z" />
-                                    <path fill-rule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 010 1.5H3a.75.75 0 010-1.5h.75v-9.918a.75.75 0 01.634-.74A49.109 49.109 0 0112 9c2.59 0 5.134.202 7.616.592a.75.75 0 01.634.74zm-7.5 2.418a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75zm3-.75a.75.75 0 01.75.75v6.75a.75.75 0 01-1.5 0v-6.75a.75.75 0 01.75-.75zM9 12.75a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75z" clip-rule="evenodd" />
-                                    <path d="M12 7.875a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" />
-                                </svg>
-                            </div>
-                            {{ $e->section2title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section2description }}</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-base font-semibold leading-7 text-gray-900">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                </svg>
-                            </div>
-                            {{ $e->section3title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section3description }}</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-base font-semibold leading-7 text-gray-900">
-                            <div
-                                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-white">
-                                    <path fill-rule="evenodd" d="M15.22 6.268a.75.75 0 01.968-.432l5.942 2.28a.75.75 0 01.431.97l-2.28 5.941a.75.75 0 11-1.4-.537l1.63-4.251-1.086.483a11.2 11.2 0 00-5.45 5.174.75.75 0 01-1.199.19L9 12.31l-6.22 6.22a.75.75 0 11-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l3.606 3.605a12.694 12.694 0 015.68-4.973l1.086-.484-4.251-1.631a.75.75 0 01-.432-.97z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            {{ $e->section4title }}
-                        </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section4description }}</dd>
-                    </div>
-                </dl>
-            </div>
+                <div class="mx-auto max-w-2xl lg:text-center">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">Our Work</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $e->title }}
+                    </p>
+                    <p class="mt-6 text-lg leading-8 text-gray-600">{{ $e->titledescription }}</p>
+                </div>
+                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-6 h-6 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                {{ $e->section1title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section1description }}</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-6 h-6 fill-white">
+                                        <path
+                                            d="M11.584 2.376a.75.75 0 01.832 0l9 6a.75.75 0 11-.832 1.248L12 3.901 3.416 9.624a.75.75 0 01-.832-1.248l9-6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M20.25 10.332v9.918H21a.75.75 0 010 1.5H3a.75.75 0 010-1.5h.75v-9.918a.75.75 0 01.634-.74A49.109 49.109 0 0112 9c2.59 0 5.134.202 7.616.592a.75.75 0 01.634.74zm-7.5 2.418a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75zm3-.75a.75.75 0 01.75.75v6.75a.75.75 0 01-1.5 0v-6.75a.75.75 0 01.75-.75zM9 12.75a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75z"
+                                            clip-rule="evenodd" />
+                                        <path d="M12 7.875a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" />
+                                    </svg>
+                                </div>
+                                {{ $e->section2title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section2description }}</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                    </svg>
+                                </div>
+                                {{ $e->section3title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section3description }}</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-6 h-6 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M15.22 6.268a.75.75 0 01.968-.432l5.942 2.28a.75.75 0 01.431.97l-2.28 5.941a.75.75 0 11-1.4-.537l1.63-4.251-1.086.483a11.2 11.2 0 00-5.45 5.174.75.75 0 01-1.199.19L9 12.31l-6.22 6.22a.75.75 0 11-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l3.606 3.605a12.694 12.694 0 015.68-4.973l1.086-.484-4.251-1.631a.75.75 0 01-.432-.97z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                {{ $e->section4title }}
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section4description }}</dd>
+                        </div>
+                    </dl>
+                </div>
             @endforeach
         </div>
     </div>
@@ -435,7 +506,8 @@
                     <img src="{{ asset('img/LicenseSoftware/Zoom-Logo.png') }}" alt="" class="h-9">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/Adobe_Corporate_logo.png') }}" alt="" class="h-9">
+                    <img src="{{ asset('img/LicenseSoftware/Adobe_Corporate_logo.png') }}" alt=""
+                        class="h-9">
                 </a>
                 <a href="#" class="flex justify-center items-center">
                     <svg class="h-8 hover:text-gray-900 dark:hover:text-white" viewBox="0 0 151 34"
@@ -455,10 +527,12 @@
                 </a>
 
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/MATLAB-logo.png') }}" alt="" class="h-12 w-full">
+                    <img src="{{ asset('img/LicenseSoftware/MATLAB-logo.png') }}" alt=""
+                        class="h-12 w-full">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/Kaspersky_logo.svg.png') }}" alt="" class="h-9">
+                    <img src="{{ asset('img/LicenseSoftware/Kaspersky_logo.svg.png') }}" alt=""
+                        class="h-9">
                 </a>
                 <a href="#" class="flex justify-center items-center">
                     <img src="{{ asset('img/LicenseSoftware/DigiCert_logo.png') }}" alt="" class="h-9">
@@ -473,37 +547,48 @@
                     <img src="{{ asset('img/LicenseSoftware/fusion.png') }}" alt="" class="h-24">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/autodesk-autocad4739-removebg-preview.png') }}" alt="" class="h-30">
+                    <img src="{{ asset('img/LicenseSoftware/autodesk-autocad4739-removebg-preview.png') }}"
+                        alt="" class="h-30">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/eset-removebg-preview.png') }}" alt="" class="h-24">
+                    <img src="{{ asset('img/LicenseSoftware/eset-removebg-preview.png') }}" alt=""
+                        class="h-24">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/RAD-removebg-preview.png') }}" alt="" class="h-30">
+                    <img src="{{ asset('img/LicenseSoftware/RAD-removebg-preview.png') }}" alt=""
+                        class="h-30">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/news-wordpress-feature-endnote-changes-removebg-preview.png') }}" alt="" class="h-12">
+                    <img src="{{ asset('img/LicenseSoftware/news-wordpress-feature-endnote-changes-removebg-preview.png') }}"
+                        alt="" class="h-12">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/kisspng-spss-modeler-ibm-computer-software-statistics-boards-5b05cf77cc75f0.3151321715271074478375-removebg-preview.png') }}" alt="" class="h-24">
+                    <img src="{{ asset('img/LicenseSoftware/kisspng-spss-modeler-ibm-computer-software-statistics-boards-5b05cf77cc75f0.3151321715271074478375-removebg-preview.png') }}"
+                        alt="" class="h-24">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/turnitin-760x600-removebg-preview.png') }}" alt="" class="h-24">
+                    <img src="{{ asset('img/LicenseSoftware/turnitin-760x600-removebg-preview.png') }}"
+                        alt="" class="h-24">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/ruckus_wireless_logo-removebg-preview.png') }}" alt="" class="h-24">
+                    <img src="{{ asset('img/LicenseSoftware/ruckus_wireless_logo-removebg-preview.png') }}"
+                        alt="" class="h-24">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/lectora-removebg-preview.png') }}" alt="" class="h-24">
+                    <img src="{{ asset('img/LicenseSoftware/lectora-removebg-preview.png') }}" alt=""
+                        class="h-24">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/Logo_High_res-removebg-preview.png') }}" alt="" class="h-24">
+                    <img src="{{ asset('img/LicenseSoftware/Logo_High_res-removebg-preview.png') }}" alt=""
+                        class="h-24">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/solidworks-vector-logo-removebg-preview.png') }}" alt="" class="h-12">
+                    <img src="{{ asset('img/LicenseSoftware/solidworks-vector-logo-removebg-preview.png') }}"
+                        alt="" class="h-12">
                 </a>
                 <a href="#" class="flex justify-center items-center">
-                    <img src="{{ asset('img/LicenseSoftware/Minitab___Logo-removebg-preview.png') }}" alt="" class="h-24">
+                    <img src="{{ asset('img/LicenseSoftware/Minitab___Logo-removebg-preview.png') }}" alt=""
+                        class="h-24">
                 </a>
             </div>
         </div>
@@ -516,39 +601,45 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
                 @foreach ($datacontact as $e)
-                <div class="max-w-xl lg:max-w-lg">
-                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Hubungi Kami
-                    </h2>
-                    <p class="mt-4 text-lg leading-8 text-gray-300">{{ $e->email }}</p>
-                    <div class="mt-6 flex max-w-md gap-x-4">
-                        <label for="email-address" class="sr-only">Email address</label>
-                        <input id="email-address" name="email" type="email" autocomplete="email" required
-                            class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                            placeholder="Enter your email">
-                        <button type="submit"
-                            class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Feedback</button>
-                    </div>
-                </div>
-                <dl class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
-                    <div class="flex flex-col items-start">
-                        <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-white">
-                                <path fill-rule="evenodd" d="M3 2.25a.75.75 0 000 1.5v16.5h-.75a.75.75 0 000 1.5H15v-18a.75.75 0 000-1.5H3zM6.75 19.5v-2.25a.75.75 0 01.75-.75h3a.75.75 0 01.75.75v2.25a.75.75 0 01-.75.75h-3a.75.75 0 01-.75-.75zM6 6.75A.75.75 0 016.75 6h.75a.75.75 0 010 1.5h-.75A.75.75 0 016 6.75zM6.75 9a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zM6 12.75a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5h-.75a.75.75 0 01-.75-.75zM10.5 6a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zm-.75 3.75A.75.75 0 0110.5 9h.75a.75.75 0 010 1.5h-.75a.75.75 0 01-.75-.75zM10.5 12a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zM16.5 6.75v15h5.25a.75.75 0 000-1.5H21v-12a.75.75 0 000-1.5h-4.5zm1.5 4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 2.25a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75v-.008a.75.75 0 00-.75-.75h-.008zM18 17.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008z" clip-rule="evenodd" />
-                            </svg>
+                    <div class="max-w-xl lg:max-w-lg">
+                        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Hubungi Kami
+                        </h2>
+                        <p class="mt-4 text-lg leading-8 text-gray-300">{{ $e->email }}</p>
+                        <div class="mt-6 flex max-w-md gap-x-4">
+                            <label for="email-address" class="sr-only">Email address</label>
+                            <input id="email-address" name="email" type="email" autocomplete="email" required
+                                class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                placeholder="Enter your email">
+                            <button type="submit"
+                                class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Feedback</button>
                         </div>
-                        <dt class="mt-4 font-semibold text-white">Alamat</dt>
-                        <dd class="mt-2 leading-7 text-gray-400">{{ $e->address }}</dd>
                     </div>
-                    <div class="flex flex-col items-start">
-                        <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-white">
-                                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
-                            </svg>
+                    <dl class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
+                        <div class="flex flex-col items-start">
+                            <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-6 h-6 fill-white">
+                                    <path fill-rule="evenodd"
+                                        d="M3 2.25a.75.75 0 000 1.5v16.5h-.75a.75.75 0 000 1.5H15v-18a.75.75 0 000-1.5H3zM6.75 19.5v-2.25a.75.75 0 01.75-.75h3a.75.75 0 01.75.75v2.25a.75.75 0 01-.75.75h-3a.75.75 0 01-.75-.75zM6 6.75A.75.75 0 016.75 6h.75a.75.75 0 010 1.5h-.75A.75.75 0 016 6.75zM6.75 9a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zM6 12.75a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5h-.75a.75.75 0 01-.75-.75zM10.5 6a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zm-.75 3.75A.75.75 0 0110.5 9h.75a.75.75 0 010 1.5h-.75a.75.75 0 01-.75-.75zM10.5 12a.75.75 0 000 1.5h.75a.75.75 0 000-1.5h-.75zM16.5 6.75v15h5.25a.75.75 0 000-1.5H21v-12a.75.75 0 000-1.5h-4.5zm1.5 4.5a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 2.25a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75v-.008a.75.75 0 00-.75-.75h-.008zM18 17.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <dt class="mt-4 font-semibold text-white">Alamat</dt>
+                            <dd class="mt-2 leading-7 text-gray-400">{{ $e->address }}</dd>
                         </div>
-                        <dt class="mt-4 font-semibold text-white">Nomor Handphone</dt>
-                        <dd class="mt-2 leading-7 text-gray-400">{{ $e->phone }}</dd>
-                    </div>
-                </dl>
+                        <div class="flex flex-col items-start">
+                            <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-6 h-6 fill-white">
+                                    <path fill-rule="evenodd"
+                                        d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <dt class="mt-4 font-semibold text-white">Nomor Handphone</dt>
+                            <dd class="mt-2 leading-7 text-gray-400">{{ $e->phone }}</dd>
+                        </div>
+                    </dl>
                 @endforeach
             </div>
         </div>
@@ -634,7 +725,8 @@
                 <div class="mb-6 md:mb-0">
                     <a href="#" class="flex items-center">
                         <img src="{{ asset('img/logo.png') }}" class="mr-3 h-8" alt="FlowBite Logo" />
-                        <span class="self-center text-base font-bold whitespace-nowrap dark:text-black pr-1">LUMINA EKA</span>
+                        <span class="self-center text-base font-bold whitespace-nowrap dark:text-black pr-1">LUMINA
+                            EKA</span>
                         <span class="self-center text-base font-normal whitespace-nowrap dark:text-black">Optima</span>
                     </a>
                 </div>
@@ -656,7 +748,8 @@
                         </h2>
                         <ul class="text-gray-600 dark:text-gray-400">
                             <li class="mb-4">
-                                <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Instagram</a>
+                                <a href="https://github.com/themesberg/flowbite"
+                                    class="hover:underline ">Instagram</a>
                             </li>
                             <li>
                                 <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Facebook</a>
@@ -679,7 +772,8 @@
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div class="sm:flex sm:items-center sm:justify-between">
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a
-                        href="https://flowbite.com" class="hover:underline">Lumina Eka Optima</a>. All Rights Reserved.
+                        href="https://flowbite.com" class="hover:underline">Lumina Eka Optima</a>. All Rights
+                    Reserved.
                 </span>
                 <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                     <a href="#" class="text-gray-500 hover:text-black-900 dark:hover:text-black">
