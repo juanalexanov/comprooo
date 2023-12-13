@@ -42,9 +42,11 @@
         <!--Carousel items-->
         <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
             <!--First item-->
+
             <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                 data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                <div class="bg-carousel-hero">
+                <div class="bg-carousel-hero" style="background-image: url('{{ asset('img/carousel2.jpg') }}')">
+                {{-- <div class="bg-carousel-hero" style="background-image: url('{{ $e->url_image }}')"> --}}
                     <div class="relative isolate px-6 pt-14 lg:px-8">
                         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                             aria-hidden="true">
@@ -63,12 +65,8 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">PT. Lumina Eka
-                                    Optima</h1>
-                                <p class="mt-6 text-md leading-7 text-white">Memasuki era teknologi 4.0, IT telah
-                                    menjadi salah satu kebutuhan utama. Ditandai dengan semakin mudahnya akses internet,
-                                    terjangkaunya harga gawai dan perangkat keras lainnya sehingga penerapan dan
-                                    pemanfaat IT semakin meluas disemua bidang.</p>
+                                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">d</h1>
+                                <p class="mt-6 text-md leading-7 text-white">d</p>
                                 <div class="mt-10 flex items-center justify-center gap-x-6">
                                     <a href="#"
                                         class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
@@ -87,20 +85,21 @@
                     </div>
                 </div>
             </div>
+
+
             <!--Second item-->
-            @foreach ($datacarousel as $item)
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
             data-te-carousel-item style="backface-visibility: hidden">
-                <img src="{{url('/carousel/'.$item->id)}}" class="block w-full"
+                <img src="{{ asset('img/carousel1.jpg') }}" class="block w-full"
                     alt="..." />
                 <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                    <h5 class="text-xl">{{ $item->title }}</h5>
+                    <h5 class="text-xl">cokcoko</h5>
                     <p>
-                        {{ $item->description }}
+                        cokcokcok
                     </p>
                 </div>
             </div>
-            @endforeach
+
             <!--Third item-->
             <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                 data-te-carousel-item style="backface-visibility: hidden">
@@ -142,26 +141,22 @@
                 class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
         </button>
     </div>
+
     <br>
     <br>
     <br>
 
     <div class="overflow-hidden bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            @foreach ($dataaboutus as $e)
             <div
                 class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
                 <div class="lg:pr-8 lg:pt-4">
                     <div class="lg:max-w-lg">
                         <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">About Us</h2>
-                        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">PT. Lumina Eka
-                            Optima</p>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">PT Lumina Eka Optima dibangun/didirikan oleh
-                            orang-orang sudah memiliki banyak pengalaman di bidang IT</p>
-                        <p class="mt-2 text-md leading-8 text-gray-500">Memiliki pengalaman bertahun-tahun dalam
-                            mengerjakan projek-projek IT untuk ruang lingkup dunia pendidikan meliputi kampus dan
-                            sekolah baik negeri maupun swasta. Tidak hanya dipendidikan, namun juga di sektor industri,
-                            komersial bahkan ruang lingkup
-                            pemerintahan</p>
+                        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $e->title }}</p>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">{{ $e->description1 }}</p>
+                        <p class="mt-2 text-md leading-8 text-gray-500">{{ $e->description2 }}</p>
                         <dl class="mt-5 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
                             <div class="relative pl-9">
                                 <dt class="inline font-semibold text-gray-900">
@@ -171,7 +166,7 @@
                                             d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Berpengalaman.
+                                    {{ $e->section1 }}
                                 </dt>
                                 <dd class="inline"></dd>
                             </div>
@@ -183,7 +178,7 @@
                                             d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Beragam Sektor.
+                                    {{ $e->section2 }}
                                 </dt>
                                 <dd class="inline"></dd>
                             </div>
@@ -197,18 +192,19 @@
                                             d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Partnership dengan beragam perusahaan.
+                                    {{ $e->section3 }}
                                 </dt>
                                 <dd class="inline"></dd>
                             </div>
                         </dl>
                     </div>
                 </div>
-                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg"
+                <img src="{{ $e->url_image }}"
                     alt="Product screenshot"
                     class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
                     width="2432" height="1442">
             </div>
+            @endforeach
         </div>
     </div>
 
@@ -224,72 +220,30 @@
         </div>
         <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
         <div class="mt-11 grid md:grid-cols-4 gap-4">
+            @foreach ($datacard as $e)
             <!-- Card 1 -->
             <div class="boxx bg-gray shadow-xl overflow-hidden">
-                <img src="{{ asset('img/office365.jpg') }}" alt="Featured insight"
+                <img src="{{ $e->url_image }}" alt="Featured insight"
                     class="w-full h-96 object-cover" />
                 <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2 text-slate-50">Office 365</h3>
+                    <h3 class="font-bold text-lg mb-2 text-slate-50">{{ $e->title }}</h3>
                     <p class="text-slate-300 text-base">
-                        Read more about how globalization is changing and what you need to do to stay ahead.
+                        {{ $e->description }}
                     </p>
                     <div class="mt-4">
                         <a href="#" class="text-indigo-600 hover:text-indigo-900">Read more</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Card 2 -->
-            <div class="boxx bg-gray shadow-xl overflow-hidden">
-                <img src="{{ asset('img/ruckus.jpg') }}" alt="Technology and ambitions"
-                    class="w-full h-96 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2 text-slate-50">Ruckus
-                    </h3>
-                    <p class="text-slate-300 text-base">
-                        Discover how to accelerate your technological capabilities to meet your ambitions.
-                    </p>
-                    <div class="mt-4">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Read more</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="boxx bg-gray shadow-xl overflow-hidden">
-                <img src="{{ asset('img/IBM.jpg') }}" alt="Transformation success"
-                    class="w-full h-96 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2 text-slate-50">IBM</h3>
-                    <p class="text-slate-300 text-base">
-                        Learn how people's power can drive successful transformation in your business.
-                    </p>
-                    <div class="mt-4">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="boxx bg-gray shadow-xl overflow-hidden">
-                <img src="{{ asset('img/MATLAB.jpg') }}" alt="Transformation success"
-                    class="w-full h-96 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2 text-slate-50">MATLAB</h3>
-                    <p class="text-slate-300 text-base">
-                        Learn how people's power can drive successful transformation in your business.
-                    </p>
-                    <div class="mt-4">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Read more</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <br>
     <br>
 
     <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
+        @foreach ($dataourservices as $e)
+        <img src="{{ $e->url_image }}"
             alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
         <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
             aria-hidden="true">
@@ -306,8 +260,7 @@
         <div class="pembatas mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl italic">Our Services</h2>
-                <p class="mt-6 text-lg leading-8 text-gray-300">Selamat datang di bagian layanan dari website kami, di
-                    mana Anda dapat menemukan gambaran singkat mengenai berbagai layanan yang kami tawarkan.</p>
+                <p class="mt-6 text-lg leading-8 text-gray-300">{{ $e->title }}</p>
             </div>
             <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
                 {{-- <div
@@ -333,11 +286,9 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            Lisensi Software
+                            {{ $e->section1title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">Bukan saja hanya menyediakan lisensi, namun
-                            kami juga membantu proses aktivasi, instalasi hingga implementasi perangkat lunak yang
-                            dimaksud.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section1description }}</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
@@ -349,10 +300,9 @@
                                         d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
                                 </svg>
                             </div>
-                            Pelatihan
+                            {{ $e->section2title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">Kami menyediakan berbagai macam pelatihan
-                            dari berbagai macam teknologi IT yang sudah ternama.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section2description }}</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
@@ -371,10 +321,9 @@
                                     </g>
                                 </svg>
                             </div>
-                            Sertifikasi
+                            {{ $e->section3title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">Kami menyediakan berbagai macam sertifikasi
-                            dari berbagai macam teknologi IT yang sudah ternama.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section3description }}</dd>
                     </div>
                     <div class="relative pl-16">
                         {{-- <div class="flex flex-col-reverse">
@@ -391,14 +340,14 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            Layanan IT berbasis cloud
+                            {{ $e->section4title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-300">Teknologi yang masih tergolong awam di
-                            Indonesia, sudah tersedia di PT Lumina Eka Optima.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section4description }}</dd>
                     </div>
                 </dl>
             </div>
         </div>
+        @endforeach
     </div>
 
 
@@ -407,11 +356,11 @@
 
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            @foreach ($dataourwork as $e)
             <div class="mx-auto max-w-2xl lg:text-center">
                 <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">Our Work</h2>
-                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Mengapa Berlisensi?</p>
-                <p class="mt-6 text-lg leading-8 text-gray-600">MICROSOFT menyediakan produk khusus bagi dunia pendidikan
-                    dengan harga yang sangat terjangkau.</p>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $e->title }}</p>
+                <p class="mt-6 text-lg leading-8 text-gray-600">{{ $e->titledescription }}</p>
             </div>
             <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
                 <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
@@ -423,9 +372,9 @@
                                     <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            Bebas Virus dan bahaya lainnya
+                            {{ $e->section1title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Dengan menggunakan software berlisensi, komputer akan lebih terjaga karena perlindungan dari Microsoft.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section1description }}</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
@@ -437,9 +386,9 @@
                                     <path d="M12 7.875a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" />
                                 </svg>
                             </div>
-                            Mematuhi Hukum
+                            {{ $e->section2title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Institusi Pendidikan mengajarkan kepada staf dan perserta didiknya mengenai "Intellectual Property Rights" sebagai penghargaan atas hak cipta orang lain.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section2description }}</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
@@ -451,9 +400,9 @@
                                         d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                                 </svg>
                             </div>
-                            Update Berkala
+                            {{ $e->section3title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Dengan Windows Update Services, anda dapat secara regular mengupdate sistem komputer anda dengan patch, antivirus terbaru secara gratis dari Microsoft.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section3description }}</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
@@ -463,12 +412,13 @@
                                     <path fill-rule="evenodd" d="M15.22 6.268a.75.75 0 01.968-.432l5.942 2.28a.75.75 0 01.431.97l-2.28 5.941a.75.75 0 11-1.4-.537l1.63-4.251-1.086.483a11.2 11.2 0 00-5.45 5.174.75.75 0 01-1.199.19L9 12.31l-6.22 6.22a.75.75 0 11-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l3.606 3.605a12.694 12.694 0 015.68-4.973l1.086-.484-4.251-1.631a.75.75 0 01-.432-.97z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            Peningkatan Pendidikan
+                            {{ $e->section4title }}
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Mengikuti program microsoft PIL (Partner in Learning) sebagai peningkatan kemampuan TIK.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section4description }}</dd>
                     </div>
                 </dl>
             </div>
+            @endforeach
         </div>
     </div>
     <br>
@@ -565,10 +515,11 @@
     <div class="pembatas2 relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+                @foreach ($datacontact as $e)
                 <div class="max-w-xl lg:max-w-lg">
                     <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Hubungi Kami
                     </h2>
-                    <p class="mt-4 text-lg leading-8 text-gray-300">support@luminaekaoptima.com</p>
+                    <p class="mt-4 text-lg leading-8 text-gray-300">{{ $e->email }}</p>
                     <div class="mt-6 flex max-w-md gap-x-4">
                         <label for="email-address" class="sr-only">Email address</label>
                         <input id="email-address" name="email" type="email" autocomplete="email" required
@@ -586,7 +537,7 @@
                             </svg>
                         </div>
                         <dt class="mt-4 font-semibold text-white">Alamat</dt>
-                        <dd class="mt-2 leading-7 text-gray-400">Grand Slipi Tower Lt.5 Unit F. Jl. Letjen S Parman Kav 22-24 Palmerah, Jakarta 11480</dd>
+                        <dd class="mt-2 leading-7 text-gray-400">{{ $e->address }}</dd>
                     </div>
                     <div class="flex flex-col items-start">
                         <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
@@ -595,9 +546,10 @@
                             </svg>
                         </div>
                         <dt class="mt-4 font-semibold text-white">Nomor Handphone</dt>
-                        <dd class="mt-2 leading-7 text-gray-400">+62859-3988-8859</dd>
+                        <dd class="mt-2 leading-7 text-gray-400">{{ $e->phone }}</dd>
                     </div>
                 </dl>
+                @endforeach
             </div>
         </div>
         <div class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">

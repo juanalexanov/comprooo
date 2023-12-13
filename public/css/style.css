@@ -59,11 +59,10 @@ nav{
 } */
 
 .bg-carousel-hero{
-    background-image: url('../img/carousel2.jpg');
+    /* background-image: url('../img/carousel2.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* i want to shadow my background image */
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.725);
 
 }

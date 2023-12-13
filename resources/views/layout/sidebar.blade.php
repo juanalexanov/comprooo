@@ -56,8 +56,8 @@
                 <a class="collapse-item" href="{{ url('/admin/cms/carousel') }}">Edit Carousel</a>
                 <a class="collapse-item" href="{{ url('/admin/cms/aboutus') }}">Edit About Us</a>
                 <a class="collapse-item" href="{{ url('/admin/cms/card') }}">Edit Our Product</a>
-                <a class="collapse-item" href="utilities-animation.html">Edit Our Service</a>
-                <a class="collapse-item" href="utilities-animation.html">Edit Our Work</a>
+                <a class="collapse-item" href="{{ url('/admin/cms/ourservices') }}">Edit Our Service</a>
+                <a class="collapse-item" href="{{ url('/admin/cms/ourwork') }}">Edit Our Work</a>
                 <a class="collapse-item" href="{{ url('/admin/cms/contact') }}">Edit Contact</a>
             </div>
         </div>

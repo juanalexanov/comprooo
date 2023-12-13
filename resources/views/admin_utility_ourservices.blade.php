@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lumina Admin - Edit Card</title>
+    <title>Lumina Admin - Edit Our Work</title>
 
     <!-- Custom fonts for this template-->
     {{-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> --}}
@@ -247,10 +247,10 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-xxl">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Edit Our Product</h1>
+                    <h1 class="h3 mb-1 text-gray-800">Edit Our Services</h1>
                     {{-- <p class="mb-4">Bootstrap's default utility classes can be found on the official <a
                             href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities
                         below were created to extend this theme past the default utility classes built into Bootstrap's
@@ -258,27 +258,56 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                        <div class="container mt-5">
+                        <div class="container-fluid mt-5">
                             <div class="card">
                                 <div class="card-body">
                                     <header>
-                                        <h3>Add Card</h3>
+                                        <h3>Add Our Services</h3>
                                     </header>
                                     <hr style="margin: 1rem -1rem;" />
-                                    <form action="/admin/cms/card/create" method="post" enctype="multipart/form-data">
+                                    <form action="/admin/cms/ourservices/create" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="imagefile" class="form-label">File</label>
+                                            <label for="imagefile" class="form-label">Image File</label>
                                             <input type="file" class="form-control" name="imagefile">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="titlecarousel" class="form-label">Title</label>
-                                            <input type="text" class="form-control" name="titlecard">
+                                            <label for="email" class="form-label">Title</label>
+                                            <input type="text" class="form-control" name="title">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="desccarousel">Description</label>
-                                            <textarea class="form-control" rows="3" name="desccard"></textarea>
+                                            <label for="section1title">section 1 title</label>
+                                            <input type="text" class="form-control" name="sec1title">
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="section1description">section 1 description</label>
+                                            <input type="text" class="form-control" name="sec1description">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="section2title">section 2 title</label>
+                                            <input type="text" class="form-control" name="sec2title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="section2description">section 2 description</label>
+                                            <input type="text" class="form-control" name="sec2description">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="section3title">section 3 title</label>
+                                            <input type="text" class="form-control" name="sec3title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="section3description">section 3 description</label>
+                                            <input type="text" class="form-control" name="sec3description">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="section4title">section 4 title</label>
+                                            <input type="text" class="form-control" name="sec4title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="section4description">section 4 description</label>
+                                            <input type="text" class="form-control" name="sec4description">
+                                        </div>
+
                                         <div class="mb-3 footer text-end">
                                             <button type="submit" class="btn btn-primary">Create</button>
                                         </div>
@@ -288,33 +317,47 @@
                             <div class="card">
                                 <div class="card-body">
                                     <header>
-                                        <h3>Card</h3>
+                                        <h3>Our Services</h3>
                                     </header>
                                     <hr style="margin: 1rem -1rem;" />
                                     <div class="table-responsive">
 
-                                        <table class="table" id="table-Carousel">
+                                        <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
                                                     <th class="text-center">Image</th>
                                                     <th class="text-center">Title</th>
-                                                    <th class="text-center">Description</th>
-                                                    <th class="text-center">Action</th>
+                                                    <th class="text-center">section 1 title</th>
+                                                    <th class="text-center">section 1 description</th>
+                                                    <th class="text-center">section 2 title</th>
+                                                    <th class="text-center">section 2 description</th>
+                                                    <th class="text-center">section 3 title</th>
+                                                    <th class="text-center">section 4 description</th>
+                                                    <th class="text-center">section 4 title</th>
+                                                    <th class="text-center">section 4 description</th>
+                                                    <th class="text-center" scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($datacard as $item)
+                                                @foreach ($dataourservices as $item)
                                                     <tr id = "{{$item->id}}">
                                                         <td>{{$loop->index+1}}</td>
-                                                        <td><img src="{{$item->url_image}}" alt="" class="w-50 h-50"></td>
+                                                        <td><img src="{{$item->url_image}}" alt="" class="w-100 h-100"></td>
                                                         <td class="text-center">{{ $item->title }}</td>
-                                                        <td class="text-center">{{ $item->description }}</td>
-                                                        <td class="text-center">
+                                                        <td class="text-center">{{ $item->section1title }}</td>
+                                                        <td class="text-center">{{ $item->section1description }}</td>
+                                                        <td class="text-center">{{ $item->section2title }}</td>
+                                                        <td class="text-center">{{ $item->section2description }}</td>
+                                                        <td class="text-center">{{ $item->section3title }}</td>
+                                                        <td class="text-center">{{ $item->section3description }}</td>
+                                                        <td class="text-center">{{ $item->section4title }}</td>
+                                                        <td class="text-center">{{ $item->section4description }}</td>
+                                                        <td class="text-center d-flex flex-nowrap">
                                                             <button  class="btn btn-info btn-circle displayCarouselDetail">
                                                                 <i class="fas fa-info-circle"></i>
                                                             </button>
-                                                            <a href="/admin/cms/card/delete/{{$item->id}}" class="btn btn-danger btn-circle">
+                                                            <a href="/admin/cms/ourservices/delete/{{$item->id}}" class="btn btn-danger btn-circle">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
@@ -336,7 +379,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Update Carousel</h5>
+                            <h5 class="modal-title">Update Our Services</h5>
 
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -345,22 +388,47 @@
                         <form action="" method="post" id = "form-update-displaybanner" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
-                                {{-- <div class="mb-3">
-                                    <label for="index" class="form-label">Url Image</label>
-                                    <input type="text" class="form-control" name="index" id = "db-index">
-                                </div> --}}
                                 <div class="mb-3">
-                                    <label for="imagefile" class="form-label">File</label>
+                                    <label for="imagefile" class="form-label">Image File</label>
                                     <input type="file" class="form-control" name="imagefilemodal">
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Title</label>
-                                    <input type="text" class="form-control" name="titlecardmodal" id = "db-title">
+                                    <input type="text" class="form-control" name="titlemodal" id="db-title">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <input type="text" class="form-control" name="desccardmodal" id = "db-description">
+                                    <label for="section1title">section 1 title</label>
+                                    <input type="text" class="form-control" name="sec1titlemodal" id = "db-sec1title">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="section1description">section 1 description</label>
+                                    <input type="text" class="form-control" name="sec1descriptionmodal" id = "db-sec1description">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="section2title">section 2 title</label>
+                                    <input type="text" class="form-control" name="sec2titlemodal" id = "db-sec2title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="section2description">section 2 description</label>
+                                    <input type="text" class="form-control" name="sec2descriptionmodal" id = "db-sec2description">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="section3title">section 3 title</label>
+                                    <input type="text" class="form-control" name="sec3titlemodal" id = "db-sec3title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="section3description">section 3 description</label>
+                                    <input type="text" class="form-control" name="sec3descriptionmodal" id = "db-sec3description">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="section4title">section 4 title</label>
+                                    <input type="text" class="form-control" name="sec4titlemodal" id = "db-sec4title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="section4description">section 4 description</label>
+                                    <input type="text" class="form-control" name="sec4descriptionmodal" id = "db-sec4description">
+                                </div>
+
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>
@@ -422,11 +490,17 @@
     <script>
         $('.displayCarouselDetail').on('click', function(){
         var temp = $(this).closest('tr').children();
-        $('#form-update-displaybanner').prop('action',"/admin/cms/card/update/"+$(this).closest('tr').attr('id'));
-
+        $('#form-update-displaybanner').prop('action',"/admin/cms/ourservices/update/"+$(this).closest('tr').attr('id'));
 
         $('#db-title').val(temp.eq(2).html());
-        $('#db-description').val(temp.eq(3).html());
+        $('#db-sec1title').val(temp.eq(3).html());
+        $('#db-sec1description').val(temp.eq(4).html());
+        $('#db-sec2title').val(temp.eq(5).html());
+        $('#db-sec2description').val(temp.eq(6).html());
+        $('#db-sec3title').val(temp.eq(7).html());
+        $('#db-sec3description').val(temp.eq(8).html());
+        $('#db-sec4title').val(temp.eq(9).html());
+        $('#db-sec4description').val(temp.eq(10).html());
         $('#modal-displayedit').modal('show');
     });
     </script>
