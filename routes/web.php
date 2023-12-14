@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use Illuminate\Http\Request;;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class,'index']);
 
-Route::get('/login',function(){
+Route::get('/login',function(Request $request){
+    if(!$request->session()->exists('data')){
+        $request->session()->put('data',array());
+    }
     return view('login');
-});
+})->name('login');
 Route::post('/login',[SiteController::class,'form_login']);
 
 Route::get('/carousel/{id}',[SiteController::class,'getPhotoCarousel']);
@@ -26,7 +30,7 @@ Route::get('/card/{id}',[SiteController::class,'getPhotoCard']);
 Route::get('/aboutus/{id}',[SiteController::class,'getPhotoAboutus']);
 Route::get('/ourservices/{id}',[SiteController::class,'getPhotoServices']);
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('admin')->group(function () {
     Route::prefix('cms')->group(function () {
         Route::prefix('carousel')->group(function () {
             Route::get('/', [SiteController::class, 'showCarousel']);
@@ -65,7 +69,8 @@ Route::prefix('admin')->group(function () {
             Route::get('/delete/{id}',[SiteController::class,'deleteContact']);
         });
     });
-    Route::get('/', function () {
-        return view('admin');
+    Route::get('/', function (Request $request) {
+        $adminLogin = $request->session()->get('adminLogin');
+        return view('admin',['adminLogin'=>$adminLogin]);
     });
 });

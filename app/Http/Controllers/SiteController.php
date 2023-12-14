@@ -68,9 +68,10 @@ class SiteController extends Controller
     public function form_login(Request $request){
         $input = $request->all();
         $datausers = UsersLumina::all();
+        $request->session()->get('data');
         foreach($datausers as $e){
             if($e->username == $input['username'] && $e->password == $input['password']){
-                $request->session()->put('userLogin',$e);
+                $request->session()->put('adminLogin',$e);
                 return redirect('/admin');
             }else{
                 return redirect('/login');
