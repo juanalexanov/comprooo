@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                                    <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                                    {{-- <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                                         <div
                                             class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                             Announcing our next round of funding. <a href="#"
@@ -48,19 +48,19 @@
                                                     aria-hidden="true"></span>Read more <span
                                                     aria-hidden="true">&rarr;</span></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="text-center">
                                         <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
                                             {{ $e->title }}</h1>
                                         <p class="mt-6 text-md leading-7 text-white">{{ $e->description }}</p>
-                                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                                        {{-- <div class="mt-10 flex items-center justify-center gap-x-6">
                                             <a href="#"
                                                 class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
                                                 started</a>
                                             <a href="#" class="text-sm font-semibold leading-6 text-white">Learn
                                                 more
                                                 <span aria-hidden="true">→</span></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                                 <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                                    <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                                    {{-- <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                                         <div
                                             class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                             Announcing our next round of funding. <a href="#"
@@ -97,19 +97,19 @@
                                                     aria-hidden="true"></span>Read more <span
                                                     aria-hidden="true">&rarr;</span></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="text-center">
                                         <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
                                             {{ $e->title }}</h1>
                                         <p class="mt-6 text-md leading-7 text-white">{{ $e->description }}</p>
-                                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                                        {{-- <div class="mt-10 flex items-center justify-center gap-x-6">
                                             <a href="#"
                                                 class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
                                                 started</a>
                                             <a href="#" class="text-sm font-semibold leading-6 text-white">Learn
                                                 more
                                                 <span aria-hidden="true">→</span></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                                    <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                                    {{-- <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                                         <div
                                             class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                             Announcing our next round of funding. <a href="#"
@@ -146,19 +146,19 @@
                                                     aria-hidden="true"></span>Read more <span
                                                     aria-hidden="true">&rarr;</span></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="text-center">
                                         <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
                                             {{ $e->title }}</h1>
                                         <p class="mt-6 text-md leading-7 text-white">{{ $e->description }}</p>
-                                        <div class="mt-10 flex items-center justify-center gap-x-6">
+                                        {{-- <div class="mt-10 flex items-center justify-center gap-x-6">
                                             <a href="#"
                                                 class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
                                                 started</a>
                                             <a href="#" class="text-sm font-semibold leading-6 text-white">Learn
                                                 more
                                                 <span aria-hidden="true">→</span></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -274,13 +274,13 @@
     <br>
     <br>
     <br>
-    <div class="listkartu container mx-auto px-20">
+    <div class="listkartu container mx-auto px-4 lg:px-20">
         <div class="mx-auto max-w-2xl sm:text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-white italic sm:text-4xl">Our Product</h2>
-            <p class="mt-6 text-4xl font-semibold tracking-wide text-white">Software yang kami tawarkan</p>
+            <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-white italic sm:text-4xl">Our Product</h2>
+            <p class="mt-4 lg:mt-6 text-lg lg:text-4xl font-semibold tracking-wide text-white">Software yang kami tawarkan</p>
         </div>
-        <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
-        <div class="mt-11 grid md:grid-cols-4 gap-4">
+        <hr class="w-36 lg:w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
+        <div class="mt-6 lg:mt-11 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach ($datacard as $e)
                 <!-- Card 1 -->
                 <div class="boxx bg-gray shadow-xl overflow-hidden">
@@ -368,17 +368,8 @@
                             <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
                                 <div
                                     class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg viewBox="-6.72 -6.72 37.44 37.44" xmlns="http://www.w3.org/2000/svg"
-                                        fill="#ffff" stroke="#ffff" stroke-width="0.00024000000000000003">
-                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke="#CCCCCC" stroke-width="0.048"></g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path
-                                                d="M23 1v18h-3v-1h2V2H2v16h8v1H1V1zm-7 2H8v1h8zm-2 3V5h-4v1zm-7 5H3v1h4zm0 2H3v1h4zm-4 3h2v-1H3zm14-3a2 2 0 1 1-2-2 2.002 2.002 0 0 1 2 2zm-1 0a1 1 0 1 0-1 1 1.001 1.001 0 0 0 1-1zm.002-4.293a.965.965 0 0 0 1.32.55 1.08 1.08 0 0 1 1.213.207 1.066 1.066 0 0 1 .21 1.21.966.966 0 0 0 .548 1.324 1.064 1.064 0 0 1 0 2.004.965.965 0 0 0-.549 1.323A1.05 1.05 0 0 1 18 16.816v7.046l-3-2.538-3 2.538v-7.046a1.05 1.05 0 0 1-.744-1.49.965.965 0 0 0-.549-1.324 1.064 1.064 0 0 1 0-2.004.966.966 0 0 0 .549-1.324 1.066 1.066 0 0 1 .209-1.21 1.08 1.08 0 0 1 1.212-.206.965.965 0 0 0 1.32-.551 1.064 1.064 0 0 1 2.005 0zm.998 13v-5.04a.93.93 0 0 0-.998.625 1.064 1.064 0 0 1-2.004 0 .93.93 0 0 0-.998-.625v5.039l2-1.692zm-1.94-4.749a1.967 1.967 0 0 1 1.853-1.308 2.12 2.12 0 0 1 .87.197l.058-.091a1.964 1.964 0 0 1 1.116-2.695v-.122a1.966 1.966 0 0 1-1.116-2.695l-.087-.084a1.965 1.965 0 0 1-2.694-1.117h-.12a1.965 1.965 0 0 1-2.694 1.117l-.087.084a1.966 1.966 0 0 1-1.116 2.695v.122a1.964 1.964 0 0 1 1.116 2.695l.058.09a2.12 2.12 0 0 1 .87-.196 1.967 1.967 0 0 1 1.853 1.308L15 17z">
-                                            </path>
-                                            <path fill="none" d="M0 0h24v24H0z"></path>
-                                        </g>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                                     </svg>
                                 </div>
                                 {{ $e->section3title }}
@@ -650,7 +641,7 @@
         </div>
     </div>
 
-    <div class="blogs bg-white">
+    {{-- <div class="blogs bg-white">
         <div class="container py-4">
             <div class="row">
                 <div class="col text-center">
@@ -717,7 +708,98 @@
                 </section>
             </div>
         </div>
+    </div> --}}
+
+    <div class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">Our Collaboration</h2>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4x">
+                    We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the best results for our clients.
+                </p>
+            </div>
+            <div class="mt-10">
+                <ul class="md:grid md:grid-cols-3 md:gap-8">
+                    <li>
+                        <div class="space-y-4">
+                            <img class="w-auto h-48 md:w-64 md:h-auto md:rounded-lg rounded-md mx-auto" src="{{ asset('img/testimonial/cewe6.jpg') }}" alt="Woman's Face">
+                            <div class="iphone space-y-2">
+                                <div class="text-lg leading-6 font-medium space-y-1">
+                                    <h3>Lindsay Walton</h3>
+                                    <p class="text-indigo-600">Front-end Developer</p>
+                                </div>
+                                <ul class="flex justify-center space-x-5">
+                                    <li>
+                                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                                            <span class="sr-only">Twitter</span>
+                                            <!-- Insert Twitter SVG icon -->
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                                            <span class="sr-only">LinkedIn</span>
+                                            <!-- Insert LinkedIn SVG icon -->
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="space-y-4">
+                            <img class="w-auto h-48 md:w-64 md:h-auto md:rounded-lg rounded-md mx-auto" src="{{ asset('img/testimonial/cewe6.jpg') }}" alt="Woman's Face">
+                            <div class="iphone space-y-2">
+                                <div class="text-lg leading-6 font-medium space-y-1">
+                                    <h3>Lindsay Walton</h3>
+                                    <p class="text-indigo-600">Front-end Developer</p>
+                                </div>
+                                <ul class="flex justify-center space-x-5">
+                                    <li>
+                                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                                            <span class="sr-only">Twitter</span>
+                                            <!-- Insert Twitter SVG icon -->
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                                            <span class="sr-only">LinkedIn</span>
+                                            <!-- Insert LinkedIn SVG icon -->
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="space-y-4">
+                            <img class="w-auto h-48 md:w-64 md:h-auto md:rounded-lg rounded-md mx-auto" src="{{ asset('img/testimonial/cewe6.jpg') }}" alt="Woman's Face">
+                            <div class="iphone space-y-2">
+                                <div class="text-lg leading-6 font-medium space-y-1">
+                                    <h3>Lindsay Walton</h3>
+                                    <p class="text-indigo-600">Front-end Developer</p>
+                                </div>
+                                <ul class="flex justify-center space-x-5">
+                                    <li>
+                                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                                            <span class="sr-only">Twitter</span>
+                                            <!-- Insert Twitter SVG icon -->
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                                            <span class="sr-only">LinkedIn</span>
+                                            <!-- Insert LinkedIn SVG icon -->
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+
 
     <footer class="mt-36 p-4 bg-white sm:p-6 dark:bg-white">
         <div class="mx-auto max-w-screen-xl">

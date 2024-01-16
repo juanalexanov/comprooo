@@ -311,22 +311,19 @@ nav{
 	}
 }
 
-@media all and (max-width: 300px) {
-	.blogs {
-		font-size: 14px;
-	}
+
+@media screen and (min-width: 390px) {
+    .iphone{
+        margin-left: 96px; /* 112px */
+        margin-right: 96px; /* 112px */
+    }
+
 }
 
-@media all and (max-width: 500px) {
-    .blogs{
-        height: 70vh;
+@media screen and (min-width: 1024px) {
+    .iphone{
+        margin-left: 40px;
+        margin-right: 40px;
     }
-	.testim .arrow {
-		font-size: 1.5rem;
-	}
-
-	.testim .cont div p {
-		line-height: 25px;
-	}
 }
 

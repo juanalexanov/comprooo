@@ -251,11 +251,6 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800">Edit Our Product</h1>
-                    {{-- <p class="mb-4">Bootstrap's default utility classes can be found on the official <a
-                            href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities
-                        below were created to extend this theme past the default utility classes built into Bootstrap's
-                        framework.</p> --}}
-
                     <!-- Content Row -->
                     <div class="row">
                         <div class="container mt-5">
@@ -307,7 +302,7 @@
                                                 @foreach ($datacard as $item)
                                                     <tr id = "{{$item->id}}">
                                                         <td>{{$loop->index+1}}</td>
-                                                        <td><img src="{{$item->url_image}}" alt="" class="w-50 h-50"></td>
+                                                        <td><img src="{{$item->url_image}}" alt="" class="w-50 h-auto"></td>
                                                         <td class="text-center">{{ $item->title }}</td>
                                                         <td class="text-center">{{ $item->description }}</td>
                                                         <td class="text-center">
