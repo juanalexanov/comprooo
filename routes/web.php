@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [SiteController::class,'index']);
+Route::get('/content', function () {
+    return view('content');
+});
+
 
 Route::get('/login',function(Request $request){
     if(!$request->session()->exists('data')){
@@ -29,6 +33,7 @@ Route::get('/carousel/{id}',[SiteController::class,'getPhotoCarousel']);
 Route::get('/card/{id}',[SiteController::class,'getPhotoCard']);
 Route::get('/aboutus/{id}',[SiteController::class,'getPhotoAboutus']);
 Route::get('/ourservices/{id}',[SiteController::class,'getPhotoServices']);
+Route::get('/ourcollaboration/{id}',[SiteController::class,'getPhotoCollaboration']);
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::prefix('cms')->group(function () {
@@ -43,30 +48,43 @@ Route::prefix('admin')->middleware('admin')->group(function () {
             Route::post('/create',[SiteController::class,'createaboutus']);
             Route::post('/update/{id}',[SiteController::class,'updateaboutus']);
             Route::get('/delete/{id}',[SiteController::class,'deleteaboutus']);
+            Route::post('/judul/create',[SiteController::class,'createJudulAboutus']);
+            Route::post('/judul/update/{id}',[SiteController::class,'updateAboutusJudul']);
         });
         Route::prefix('card')->group(function () {
             Route::get('/', [SiteController::class, 'showCard']);
             Route::post('/create',[SiteController::class,'createCard']);
             Route::post('/update/{id}',[SiteController::class,'updateCard']);
             Route::get('/delete/{id}',[SiteController::class,'deleteCard']);
+            Route::post('/judul/create',[SiteController::class,'createCardJudul']); // Untuk create `Judulcard`
+            Route::post('/judul/update/{id}',[SiteController::class,'updateCardJudul']); // Untuk update `Judulcard`
         });
         Route::prefix('ourservices')->group(function () {
             Route::get('/', [SiteController::class, 'showOurservices']);
             Route::post('/create',[SiteController::class,'createOurservices']);
             Route::post('/update/{id}',[SiteController::class,'updateOurservices']);
             Route::get('/delete/{id}',[SiteController::class,'deleteOurservices']);
+            Route::post('/judul/update/{id}',[SiteController::class,'updateOurservicesJudul']);
         });
         Route::prefix('ourwork')->group(function () {
             Route::get('/', [SiteController::class, 'showOurwork']);
             Route::post('/create',[SiteController::class,'createOurwork']);
             Route::post('/update/{id}',[SiteController::class,'updateOurwork']);
             Route::get('/delete/{id}',[SiteController::class,'deleteOurwork']);
+            Route::post('/judul/create',[SiteController::class,'createOurworkJudul']);
+            Route::post('/judul/update/{id}',[SiteController::class,'updateOurworkJudul']);
         });
         Route::prefix('contact')->group(function () {
             Route::get('/', [SiteController::class, 'showContact']);
             Route::post('/create',[SiteController::class,'createContact']);
             Route::post('/update/{id}',[SiteController::class,'updateContact']);
             Route::get('/delete/{id}',[SiteController::class,'deleteContact']);
+        });
+        Route::prefix('collaboration')->group(function () {
+            Route::get('/', [SiteController::class, 'showCollaboration']);
+            Route::post('/create',[SiteController::class,'createCollaboration']);
+            Route::post('/update/{id}',[SiteController::class,'updateCollaboration']);
+            Route::get('/delete/{id}',[SiteController::class,'deleteCollaboration']);
         });
     });
     Route::get('/', function (Request $request) {

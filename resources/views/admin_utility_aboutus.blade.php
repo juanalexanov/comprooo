@@ -301,6 +301,44 @@
                                     </form>
                                 </div>
                             </div>
+                            <br>
+                            <div class="card">
+                                <div class="card-body">
+                                    <header>
+                                        <h3>Title & Description</h3>
+                                    </header>
+                                    <hr style="margin: 1rem -1rem;" />
+                                    <div class="table-responsive">
+
+                                        <table class="table" id="table-Carousel">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th class="text-center">Title</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($dataaboutusjudul as $item)
+                                                    <tr id = "{{$item->id}}">
+                                                        <td>{{$loop->index+1}}</td>
+                                                        <td class="text-center">{{ $item->title }}</td>
+                                                        <td class="text-center">
+                                                            <button class="btn btn-info btn-circle edit-judulaboutus"
+                                                                    data-id="{{ $item->id }}"
+                                                                    data-judul="{{ $item->judulmodal }}">
+                                                            <i class="fas fa-info-circle"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
                             <div class="card">
                                 <div class="card-body">
                                     <header>
@@ -423,6 +461,33 @@
                 </div>
             </div>
 
+            <!-- Modal Update Judulcard -->
+            <div class="modal fade" id="updateJudulAboutusModal" tabindex="-1" aria-labelledby="updateJudulAboutusModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <form action="/admin/cms/aboutus/judul/update/{id}" method="post" id="form-update-judulcard">
+                    @csrf
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateJudulAboutusModalLabel">Update Judul</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                        <label for="judul" class="form-label">Judul</label>
+                        <input type="text" class="form-control" name="judulmodal" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -484,6 +549,21 @@
         $('#db-sec2').val(temp.eq(6).html());
         $('#db-sec3').val(temp.eq(7).html());
         $('#modal-displayedit').modal('show');
+    });
+        $('.edit-judulaboutus').on('click', function() {
+        // Dapatkan data dari atribut data-* yang telah Anda set pada tombol edit
+        var judulaboutusId = $(this).data('id');
+        var judul = $(this).data('judulmodal');
+
+        // Isi form pada modal dengan data yang didapatkan
+        $('#updateJudulAboutusModal').find('[name="judulmodal"]').val(judul);
+
+        // Update action dari form pada modal
+        var updateFormAction = '/admin/cms/aboutus/judul/update/' + judulaboutusId;
+        $('#form-update-judulcard').attr('action', updateFormAction);
+
+        // Tampilkan modal
+        $('#updateJudulAboutusModal').modal('show');
     });
     </script>
 </body>

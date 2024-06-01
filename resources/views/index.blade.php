@@ -16,7 +16,21 @@
     {{-- <link rel="stylesheet" href="plugins/OwlCarousel/owl.carousel.css"> --}}
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> --}}
+    <style>
+        @media screen and (min-width: 390px) {
+        .iphone{
+            margin-left: 96px; /* 112px */
+            margin-right: 96px; /* 112px */
+            }
+        }
 
+        @media screen and (min-width: 1024px) {
+        .iphone{
+            margin-left: 40px;
+            margin-right: 40px;
+            }
+        }
+        </style>
 </head>
 
 <body>
@@ -209,12 +223,13 @@
 
     <div class="overflow-hidden bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            @foreach ($dataaboutusjudul as $i)
             @foreach ($dataaboutus as $e)
                 <div
                     class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
                     <div class="lg:pr-8 lg:pt-4">
                         <div class="lg:max-w-lg">
-                            <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">About Us</h2>
+                            <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">{{ $i->title }}</h2>
                             <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 {{ $e->title }}</p>
                             <p class="mt-6 text-lg leading-8 text-gray-600">{{ $e->description1 }}</p>
@@ -262,22 +277,21 @@
                         </div>
                     </div>
                     <img src="{{ $e->url_image }}" alt="Product screenshot"
-                        class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
+                        class="w-full"
                         width="2432" height="1442">
                 </div>
             @endforeach
+            @endforeach
         </div>
     </div>
-
-
-
-    <br>
-    <br>
     <br>
     <div class="listkartu container mx-auto px-4 lg:px-20">
         <div class="mx-auto max-w-2xl sm:text-center">
-            <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-white italic sm:text-4xl">Our Product</h2>
-            <p class="mt-4 lg:mt-6 text-lg lg:text-4xl font-semibold tracking-wide text-white">Software yang kami tawarkan</p>
+            @foreach ($datacardjudul as $e)
+            {{-- mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl --}}
+            <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-gray-900 italic sm:text-4xl">{{ $e->title }}</h2>
+            <p class="mt-4 lg:mt-6 text-lg lg:text-4xl font-semibold tracking-wide text-gray-900">{{ $e->description }}</p>
+            @endforeach
         </div>
         <hr class="w-36 lg:w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
         <div class="mt-6 lg:mt-11 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -286,12 +300,12 @@
                 <div class="boxx bg-gray shadow-xl overflow-hidden">
                     <img src="{{ $e->url_image }}" alt="Featured insight" class="w-full h-96 object-cover" />
                     <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-slate-50">{{ $e->title }}</h3>
-                        <p class="text-slate-300 text-base">
+                        <h3 class="font-bold text-lg mb-2 text-gray-600">{{ $e->title }}</h3>
+                        <p class="text-gray-600 text-base">
                             {{ $e->description }}
                         </p>
                         <div class="mt-4">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Read more</a>
+                            <a href="{{ url('/content') }}" class="text-indigo-600 hover:text-indigo-900">Read more</a>
                         </div>
                     </div>
                 </div>
@@ -300,112 +314,120 @@
     </div>
     <br>
     <br>
-
-    <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+        <!-- Container for demo purpose -->
+    <div class="container my-24 mx-auto md:px-6 bg-white">
+        <!-- Section: Design Block -->
+        @foreach ($dataourservicesjudul as $i)
         @foreach ($dataourservices as $e)
-            <img src="{{ $e->url_image }}" alt=""
-                class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
-            <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
-                aria-hidden="true">
-                <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-                </div>
+
+        <section class="mb-32 pt-10">
+        <img src="{{ $e->url_image }}"
+            class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20" alt="image" />
+
+        {{-- <div class="mb-6 flex items-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (23).jpg" class="mr-2 h-8 rounded-full" alt="avatar"
+            loading="lazy" />
+            <div>
+            <span> Published <u>15.07.2020</u> by </span>
+            <a href="#!" class="font-medium">Anna Maria Doe</a>
             </div>
-            <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-                aria-hidden="true">
-                <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-                </div>
-            </div>
-            <div class="pembatas mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl italic">Our Services</h2>
-                    <p class="mt-6 text-lg leading-8 text-gray-300">{{ $e->title }}</p>
-                </div>
-                <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-                    {{-- <div
-                    class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
-                    <a href="#">Open roles <span aria-hidden="true">&rarr;</span></a>
-                    <a href="#">Internship program <span aria-hidden="true">&rarr;</span></a>
-                    <a href="#">Our values <span aria-hidden="true">&rarr;</span></a>
-                    <a href="#">Meet our leadership <span aria-hidden="true">&rarr;</span></a>
+        </div> --}}
+
+        {{-- <h1 class="mb-6 text-3xl font-bold">
+            {{ $e->title }}
+        </h1> --}}
+
+        <div class="mx-auto max-w-2xl lg:mx-0">
+
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl italic">{{ $i->title }}</h2>
+
+        </div>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+            {{ $e->title }}
+        </p>
+        <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+            {{-- <div
+            class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
+            <a href="#">Open roles <span aria-hidden="true">&rarr;</span></a>
+            <a href="#">Internship program <span aria-hidden="true">&rarr;</span></a>
+            <a href="#">Our values <span aria-hidden="true">&rarr;</span></a>
+            <a href="#">Meet our leadership <span aria-hidden="true">&rarr;</span></a>
+        </div> --}}
+            <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="relative pl-16">
+                    {{-- <div class="flex flex-col-reverse">
+                    <dt class="text-base leading-7 text-gray-300">Layanan IT berbasis cloud</dt>
+                    <dd class="text-2xl font-bold leading-9 tracking-tight text-white">Unlimited</dd>
                 </div> --}}
-                    <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-                        <div class="relative pl-16">
-                            {{-- <div class="flex flex-col-reverse">
-                            <dt class="text-base leading-7 text-gray-300">Layanan IT berbasis cloud</dt>
-                            <dd class="text-2xl font-bold leading-9 tracking-tight text-white">Unlimited</dd>
-                        </div> --}}
-                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-6 h-6">
-                                        <path fill-rule="evenodd"
-                                            d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                {{ $e->section1title }}
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section1description }}</dd>
+                    <dt class="text-base font-semibold leading-7 text-gray-900">
+                        <div
+                            class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-6 h-6 fill-white">
+                                <path fill-rule="evenodd"
+                                    d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clip-rule="evenodd" />
+                            </svg>
                         </div>
-                        <div class="relative pl-16">
-                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-6 h-6">
-                                        <path
-                                            d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
-                                    </svg>
-                                </div>
-                                {{ $e->section2title }}
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section2description }}</dd>
-                        </div>
-                        <div class="relative pl-16">
-                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                                    </svg>
-                                </div>
-                                {{ $e->section3title }}
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section3description }}</dd>
-                        </div>
-                        <div class="relative pl-16">
-                            {{-- <div class="flex flex-col-reverse">
-                            <dt class="text-base leading-7 text-gray-300">Layanan IT berbasis cloud</dt>
-                            <dd class="text-2xl font-bold leading-9 tracking-tight text-white">Unlimited</dd>
-                        </div> --}}
-                            <dt class="text-2xl font-bold leading-9 text-white tracking-tight">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-6 h-6">
-                                        <path fill-rule="evenodd"
-                                            d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                {{ $e->section4title }}
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-300">{{ $e->section4description }}</dd>
-                        </div>
-                    </dl>
+                        {{ $e->section1title }}
+                    </dt>
+                    <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section1description }}</dd>
                 </div>
-            </div>
+                <div class="relative pl-16">
+                    <dt class="text-base font-semibold leading-7 text-gray-900">
+                        <div
+                            class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-6 h-6 fill-white">
+                                <path
+                                    d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
+                            </svg>
+                        </div>
+                        {{ $e->section2title }}
+                    </dt>
+                    <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section2description }}</dd>
+                </div>
+                <div class="relative pl-16">
+                    <dt class="text-base font-semibold leading-7 text-gray-900">
+                        <div
+                            class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 fill-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                            </svg>
+                        </div>
+                        {{ $e->section3title }}
+                    </dt>
+                    <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section3description }}</dd>
+                </div>
+                <div class="relative pl-16">
+                    {{-- <div class="flex flex-col-reverse">
+                    <dt class="text-base leading-7 text-gray-300">Layanan IT berbasis cloud</dt>
+                    <dd class="text-2xl font-bold leading-9 tracking-tight text-white">Unlimited</dd>
+                </div> --}}
+                    <dt class="text-base font-semibold leading-7 text-gray-900">
+                        <div
+                            class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-6 h-6 fill-white">
+                                <path fill-rule="evenodd"
+                                    d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        {{ $e->section4title }}
+                    </dt>
+                    <dd class="mt-2 text-base leading-7 text-gray-600">{{ $e->section4description }}</dd>
+                </div>
+            </dl>
+        </div>
+        </section>
+        <!-- Section: Design Block -->
+        @endforeach
         @endforeach
     </div>
-
-
     <br>
-    <br>
-
-    <div class="bg-white py-24 sm:py-32">
+    <!-- Container for demo purpose -->
+    <div class="bg-white sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             @foreach ($dataourwork as $e)
                 <div class="mx-auto max-w-2xl lg:text-center">
@@ -483,13 +505,11 @@
             @endforeach
         </div>
     </div>
-    <br>
-    <br>
-    <br>
     <section class="pembatas">
         <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
             <h2
-                class="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
+            {{-- mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl --}}
+                class="mb-8 lg:mb-16 text-3xl font-bold tracking-tight leading-tight text-center text-gray-900 md:text-4xl">
                 All License Software</h2>
             <div
                 class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-5 dark:text-gray-400">
@@ -714,19 +734,23 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2 class="text-base font-semibold leading-7 text-indigo-600 italic">Our Collaboration</h2>
+                @foreach ($datacollaboration as $e)
                 <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4x">
-                    We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the best results for our clients.
+                    {{ $e->title }}
                 </p>
+                @endforeach
             </div>
             <div class="mt-10">
+
                 <ul class="md:grid md:grid-cols-3 md:gap-8">
+                    @foreach ($datacollaboration as $e)
                     <li>
                         <div class="space-y-4">
-                            <img class="w-auto h-48 md:w-64 md:h-auto md:rounded-lg rounded-md mx-auto" src="{{ asset('img/testimonial/cewe6.jpg') }}" alt="Woman's Face">
+                            <img class="w-auto h-48 md:w-64 md:h-auto md:rounded-lg rounded-md mx-auto" src="{{ $e->url_image }}" alt="Woman's Face">
                             <div class="iphone space-y-2">
                                 <div class="text-lg leading-6 font-medium space-y-1">
-                                    <h3>Lindsay Walton</h3>
-                                    <p class="text-indigo-600">Front-end Developer</p>
+                                    <h3>{{ $e->name }}</h3>
+                                    <p class="text-indigo-600">{{ $e->description }}</p>
                                 </div>
                                 <ul class="flex justify-center space-x-5">
                                     <li>
@@ -745,63 +769,15 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="space-y-4">
-                            <img class="w-auto h-48 md:w-64 md:h-auto md:rounded-lg rounded-md mx-auto" src="{{ asset('img/testimonial/cewe6.jpg') }}" alt="Woman's Face">
-                            <div class="iphone space-y-2">
-                                <div class="text-lg leading-6 font-medium space-y-1">
-                                    <h3>Lindsay Walton</h3>
-                                    <p class="text-indigo-600">Front-end Developer</p>
-                                </div>
-                                <ul class="flex justify-center space-x-5">
-                                    <li>
-                                        <a href="#" class="text-gray-500 hover:text-gray-700">
-                                            <span class="sr-only">Twitter</span>
-                                            <!-- Insert Twitter SVG icon -->
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-gray-500 hover:text-gray-700">
-                                            <span class="sr-only">LinkedIn</span>
-                                            <!-- Insert LinkedIn SVG icon -->
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="space-y-4">
-                            <img class="w-auto h-48 md:w-64 md:h-auto md:rounded-lg rounded-md mx-auto" src="{{ asset('img/testimonial/cewe6.jpg') }}" alt="Woman's Face">
-                            <div class="iphone space-y-2">
-                                <div class="text-lg leading-6 font-medium space-y-1">
-                                    <h3>Lindsay Walton</h3>
-                                    <p class="text-indigo-600">Front-end Developer</p>
-                                </div>
-                                <ul class="flex justify-center space-x-5">
-                                    <li>
-                                        <a href="#" class="text-gray-500 hover:text-gray-700">
-                                            <span class="sr-only">Twitter</span>
-                                            <!-- Insert Twitter SVG icon -->
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-gray-500 hover:text-gray-700">
-                                            <span class="sr-only">LinkedIn</span>
-                                            <!-- Insert LinkedIn SVG icon -->
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
+
             </div>
         </div>
     </div>
 
 
-    <footer class="mt-36 p-4 bg-white sm:p-6 dark:bg-white">
+    <footer class="mt-36 p-4 sm:p-6">
         <div class="mx-auto max-w-screen-xl">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
@@ -816,7 +792,7 @@
                     <div>
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-gray-600">Resources
                         </h2>
-                        <ul class="text-gray-600 dark:text-gray-400">
+                        <ul class="text-gray-600 dark:text-gray-500">
                             <li class="mb-4">
                                 <a href="#" class="hover:underline">HomePage</a>
                             </li>
@@ -828,7 +804,7 @@
                     <div>
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-gray-600">Follow us
                         </h2>
-                        <ul class="text-gray-600 dark:text-gray-400">
+                        <ul class="text-gray-600 dark:text-gray-500">
                             <li class="mb-4">
                                 <a href="https://github.com/themesberg/flowbite"
                                     class="hover:underline ">Instagram</a>
@@ -840,7 +816,7 @@
                     </div>
                     <div>
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-gray-600">Legal</h2>
-                        <ul class="text-gray-600 dark:text-gray-400">
+                        <ul class="text-gray-600 dark:text-gray-500">
                             <li class="mb-4">
                                 <a href="#" class="hover:underline">Privacy Policy</a>
                             </li>
@@ -853,7 +829,7 @@
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-900">© 2023 <a
                         href="https://flowbite.com" class="hover:underline">Lumina Eka Optima</a>. All Rights
                     Reserved.
                 </span>

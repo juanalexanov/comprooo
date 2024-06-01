@@ -7,11 +7,16 @@
 
 
 body{
-    background-color: #191919;
+    /* background-color: #191919; */
+    background-color: #ffff;
 }
 
 nav{
-    background-color: #191919;
+    background-color: #A6FF96;
+}
+
+footer{
+    background-color: #A6FF96;
 }
 
 /* .pembatas:before {

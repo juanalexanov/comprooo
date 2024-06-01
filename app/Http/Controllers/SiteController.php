@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Aboutus;
 use App\Models\Card;
 use App\Models\Carousel;
+use App\Models\Collaboration;
 use App\Models\Contact;
+use App\Models\JudulAboutus;
+use App\Models\Judulcard;
+use App\Models\JudulOurService;
+use App\Models\JudulOurWork;
 use App\Models\Ourservices;
 use App\Models\Ourworks;
 use App\Models\UsersLumina;
@@ -38,6 +43,12 @@ class SiteController extends Controller
         return response()->file(storage_path('/app/'.$data->url_image));
     }
 
+    public function getPhotoCollaboration($id)
+    {
+        $data = Collaboration::where('id',$id)->first();
+        return response()->file(storage_path('/app/'.$data->url_image));
+    }
+
     public function index(){
         $datacarousel = Carousel::all();
         $dataaboutus = Aboutus::all();
@@ -45,6 +56,11 @@ class SiteController extends Controller
         $dataourservices = Ourservices::all();
         $dataourwork = Ourworks::all();
         $datacontact = Contact::all();
+        $datacardjudul = Judulcard::all();
+        $dataaboutusjudul = JudulAboutus::all();
+        $dataourworkjudul = JudulOurWork::all();
+        $datacollaboration = Collaboration::all();
+        $dataourservicesjudul = JudulOurService::all();
 
         foreach ($datacarousel as $key) {
             $key->url_image = env('APP_URL').'/carousel/'.$key->id;
@@ -62,7 +78,12 @@ class SiteController extends Controller
             $key->url_image = env('APP_URL').'/ourservices/'.$key->id;
         }
 
-        return view('index',compact('datacarousel','datacontact','dataourwork','dataourservices','datacard','dataaboutus'));
+        foreach ($datacollaboration as $key) {
+            $key->url_image = env('APP_URL').'/ourcollaboration/'.$key->id;
+        }
+
+        return view('index',compact('datacarousel','datacontact','dataourwork','dataourservices','datacard','dataaboutus','datacardjudul',
+        'dataaboutusjudul','dataourworkjudul','dataourservicesjudul','datacollaboration'));
     }
 
     public function form_login(Request $request){
@@ -129,12 +150,49 @@ class SiteController extends Controller
     }
 
 
+    public function createCardJudul(Request $request){
+        $input = $request->all();
+        Judulcard::create([
+            'judul' => $request->judul,
+            'description' => $request->deskripsi_title,
+        ]);
+        return redirect()->back();
+    }
+
+    // public function updateCardJudul(Request $request, $id){
+    //     // dd($request->hasFile('imagefilemodal'));
+    //     $data = Judulcard::find($id);
+    //     $data->title = $request->judulmodal;
+    //     $data->description = $request->deskripsi_titlemodal;
+    //     $data->save();
+    //     return redirect()->back()->with('success','Data berhasil diubah');
+    // }
+
+    public function updateCardJudul(Request $request, $id){
+        // Attempt to find the Judulcard with the given ID
+        $data = Judulcard::find($id);
+
+        // Check if a Judulcard was found
+        if ($data) {
+            // The Judulcard was found, proceed with update
+            $data->title = $request->judulmodal; // Here was the mistake, it should be `judul` not `title`.
+            $data->description = $request->deskripsi_titlemodal;
+            $data->save();
+            return redirect()->back()->with('success', 'Data berhasil diubah');
+        } else {
+            // No Judulcard was found with the given ID, handle the error
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+    }
+
+
     public function showCard(){
         $datacard = Card::get();
+        $datacardjudul = Judulcard::get();
         foreach ($datacard as $key) {
             $key->url_image = env('APP_URL').'/card/'.$key->id;
         }
-        return view('admin_utility_card',compact('datacard'));
+        return view('admin_utility_card',compact('datacard','datacardjudul'));
     }
 
     public function createCard(Request $request){
@@ -146,6 +204,8 @@ class SiteController extends Controller
             $path = $request->file('imagefile')->storeAs('/public/Card', $saveFile);
         }
         Card::create([
+            'judul' => $request->judul,
+            'description_judul' => $request->deskripsi_title,
             'url_image' => $path,
             'title' => $request->titlecard,
             'description' => $request->desccard,
@@ -161,6 +221,8 @@ class SiteController extends Controller
             $path = $request->file('imagefilemodal')->storeAs('/public/Card', $saveFile);
             $data->url_image = $path;
         }
+        $data->judul = $request->judulmodal;
+        $data->description_judul = $request->deskripsi_titlemodal;
         $data->title = $request->titlecardmodal;
         $data->description = $request->desccardmodal;
         $data->save();
@@ -213,17 +275,36 @@ class SiteController extends Controller
         return redirect()->back()->with('success','Data berhasil dihapus');
     }
 
+    public function createAboutusJudul(Request $request){
+        $input = $request->all();
+        JudulAboutus::create([
+            'title' => $request->judul,
+        ]);
+        return redirect()->back();
+    }
 
+    public function updateAboutusJudul(Request $request, $id){
+        // Attempt to find the Judulcard with the given ID
+        $data = JudulAboutus::find($id);
 
-
+        if ($data) {
+            $data->title = $request->judulmodal;
+            $data->save();
+            return redirect()->back()->with('success', 'Data berhasil diubah');
+        } else {
+            // No Judulcard was found with the given ID, handle the error
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+    }
 
     public function showAboutus(){
         $dataaboutus = Aboutus::get();
+        $dataaboutusjudul = JudulAboutus::get();
         foreach ($dataaboutus as $key) {
             $key->url_image = env('APP_URL').'/aboutus/'.$key->id;
         }
 
-        return view('admin_utility_aboutus',compact('dataaboutus'));
+        return view('admin_utility_aboutus',compact('dataaboutus','dataaboutusjudul'));
     }
 
     public function createAboutus(Request $request){
@@ -270,12 +351,35 @@ class SiteController extends Controller
         return redirect()->back()->with('success','Data berhasil dihapus');
     }
 
+    public function createOurworkJudul(Request $request){
+        $input = $request->all();
+        JudulOurWork::create([
+            'title' => $request->judul,
+        ]);
+        return redirect()->back();
+    }
+
+    public function updateOurworkJudul(Request $request, $id){
+        // Attempt to find the Judulcard with the given ID
+        $data = JudulOurWork::find($id);
+
+        if ($data) {
+            $data->title = $request->judulmodal;
+            $data->save();
+            return redirect()->back()->with('success', 'Data berhasil diubah');
+        } else {
+            // No Judulcard was found with the given ID, handle the error
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+    }
+
     public function showOurwork(){
         $dataourwork = Ourworks::get();
+        $dataourworkjudul = JudulOurWork::get();
         foreach ($dataourwork as $key) {
             $key->url_image = env('APP_URL').'/carousel/'.$key->id;
         }
-        return view('admin_utility_ourwork',compact('dataourwork'));
+        return view('admin_utility_ourwork',compact('dataourwork','dataourworkjudul'));
     }
 
     public function createOurwork(Request $request){
@@ -319,12 +423,27 @@ class SiteController extends Controller
         return redirect()->back()->with('success','Data berhasil dihapus');
     }
 
+    public function updateOurservicesJudul(Request $request, $id){
+        // Attempt to find the Judulcard with the given ID
+        $data = JudulOurService::find($id);
+
+        if ($data) {
+            $data->title = $request->judulmodal;
+            $data->save();
+            return redirect()->back()->with('success', 'Data berhasil diubah');
+        } else {
+            // No Judulcard was found with the given ID, handle the error
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+    }
+
     public function showOurservices(){
         $dataourservices = Ourservices::get();
+        $dataourservicesjudul = JudulOurService::get();
         foreach ($dataourservices as $key) {
             $key->url_image = env('APP_URL').'/ourservices/'.$key->id;
         }
-        return view('admin_utility_ourservices',compact('dataourservices'));
+        return view('admin_utility_ourservices',compact('dataourservices','dataourservicesjudul'));
     }
 
     public function createOurservices(Request $request){
@@ -376,4 +495,57 @@ class SiteController extends Controller
         return redirect()->back()->with('success','Data berhasil dihapus');
     }
 
+
+
+    public function showCollaboration(){
+        $datacollaboration = Collaboration::get();
+        foreach ($datacollaboration as $key) {
+            $key->url_image = env('APP_URL').'/ourcollaboration/'.$key->id;
+        }
+        return view('admin_utility_ourcollaboration',compact('datacollaboration'));
+    }
+
+    public function createCollaboration(Request $request){
+        $input = $request->all();
+        $count = Collaboration::max('id')+1;
+        if($request->hasFile('imagefile')){
+            // $saveFile = 'card_'.$count.'.jpg';
+            $saveFile = 'collaboration_'.$count.'.'.$request->file('imagefile')->getClientOriginalExtension();
+            $path = $request->file('imagefile')->storeAs('/public/Collaboration', $saveFile);
+        }
+        Collaboration::create([
+            'title' => $request->title,
+            'url_image' => $path,
+            'name' => $request->namecollab,
+            'description' => $request->description,
+        ]);
+        return redirect()->back();
+    }
+
+    public function updateCollaboration(Request $request, $id){
+        // dd($request->hasFile('imagefilemodal'));
+        $data = Collaboration::find($id);
+        if($request->hasFile('imagefilemodal')){
+            $saveFile = 'collaboration_'.$id.'.jpg';
+            $path = $request->file('imagefilemodal')->storeAs('/public/Collaboration', $saveFile);
+            $data->url_image = $path;
+        }
+        $data->title = $request->titlemodal;
+        $data->name = $request->namecollabmodal;
+        $data->description = $request->descriptionmodal;
+        $data->save();
+        return redirect()->back()->with('success','Data berhasil diubah');
+    }
+
+    public function deleteCollaboration($id){
+        $data = Collaboration::find($id);
+        if(Storage::exists($data->url_image)){
+            Storage::delete($data->url_image);
+            $data->delete();
+        }else{
+            dd('File does not exists.');
+        }
+        Collaboration::destroy($id);
+        return redirect()->back()->with('success','Data berhasil dihapus');
+    }
 }

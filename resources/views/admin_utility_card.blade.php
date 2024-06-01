@@ -267,11 +267,11 @@
                                             <input type="file" class="form-control" name="imagefile">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="titlecarousel" class="form-label">Title</label>
+                                            <label for="titlecarousel" class="form-label">Title Card</label>
                                             <input type="text" class="form-control" name="titlecard">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="desccarousel">Description</label>
+                                            <label for="desccarousel">Description Card</label>
                                             <textarea class="form-control" rows="3" name="desccard"></textarea>
                                         </div>
                                         <div class="mb-3 footer text-end">
@@ -280,6 +280,46 @@
                                     </form>
                                 </div>
                             </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <header>
+                                        <h3>Title & Description</h3>
+                                    </header>
+                                    <hr style="margin: 1rem -1rem;" />
+                                    <div class="table-responsive">
+
+                                        <table class="table" id="table-Carousel">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th class="text-center">Title</th>
+                                                    <th class="text-center">Description</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($datacardjudul as $item)
+                                                    <tr id = "{{$item->id}}">
+                                                        <td>{{$loop->index+1}}</td>
+                                                        <td class="text-center">{{ $item->title }}</td>
+                                                        <td class="text-center">{{ $item->description }}</td>
+                                                        <td class="text-center">
+                                                            <button class="btn btn-info btn-circle edit-judulcard"
+                                                                    data-id="{{ $item->id }}"
+                                                                    data-judul="{{ $item->judulmodal }}"
+                                                                    data-description="{{ $item->description }}">
+                                                            <i class="fas fa-info-circle"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
                             <div class="card">
                                 <div class="card-body">
                                     <header>
@@ -293,8 +333,8 @@
                                                 <tr>
                                                     <th>No.</th>
                                                     <th class="text-center">Image</th>
-                                                    <th class="text-center">Title</th>
-                                                    <th class="text-center">Description</th>
+                                                    <th class="text-center">Title Card</th>
+                                                    <th class="text-center">Description Card</th>
                                                     <th class="text-center">Action</th>
                                                 </tr>
                                             </thead>
@@ -331,7 +371,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Update Carousel</h5>
+                            <h5 class="modal-title">Update</h5>
 
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -362,6 +402,36 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+            <!-- Modal Update Judulcard -->
+            <div class="modal fade" id="updateJudulCardModal" tabindex="-1" aria-labelledby="updateJudulCardModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <form action="/admin/cms/card/judul/update/{id}" method="post" id="form-update-judulcard">
+                    @csrf
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateJudulCardModalLabel">Update Judul Card</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                        <label for="judul" class="form-label">Judul</label>
+                        <input type="text" class="form-control" name="judulmodal" required>
+                        </div>
+                        <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" name="deskripsi_titlemodal" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </form>
                 </div>
             </div>
 
@@ -423,6 +493,23 @@
         $('#db-title').val(temp.eq(2).html());
         $('#db-description').val(temp.eq(3).html());
         $('#modal-displayedit').modal('show');
+    });
+        $('.edit-judulcard').on('click', function() {
+        // Dapatkan data dari atribut data-* yang telah Anda set pada tombol edit
+        var judulcardId = $(this).data('id');
+        var judul = $(this).data('judulmodal');
+        var description = $(this).data('deskripsi_titlemodal');
+
+        // Isi form pada modal dengan data yang didapatkan
+        $('#updateJudulCardModal').find('[name="judulmodal"]').val(judul);
+        $('#updateJudulCardModal').find('[name="deskripsi_titlemodal"]').val(description);
+
+        // Update action dari form pada modal
+        var updateFormAction = '/admin/cms/card/judul/update/' + judulcardId;
+        $('#form-update-judulcard').attr('action', updateFormAction);
+
+        // Tampilkan modal
+        $('#updateJudulCardModal').modal('show');
     });
     </script>
 </body>
