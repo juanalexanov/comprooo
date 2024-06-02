@@ -34,6 +34,7 @@ Route::get('/card/{id}',[SiteController::class,'getPhotoCard']);
 Route::get('/aboutus/{id}',[SiteController::class,'getPhotoAboutus']);
 Route::get('/ourservices/{id}',[SiteController::class,'getPhotoServices']);
 Route::get('/ourcollaboration/{id}',[SiteController::class,'getPhotoCollaboration']);
+Route::get('/als/{id}',[SiteController::class,'getPhotoAls']);
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::prefix('cms')->group(function () {
@@ -79,6 +80,12 @@ Route::prefix('admin')->middleware('admin')->group(function () {
             Route::post('/create',[SiteController::class,'createContact']);
             Route::post('/update/{id}',[SiteController::class,'updateContact']);
             Route::get('/delete/{id}',[SiteController::class,'deleteContact']);
+        });
+        Route::prefix('als')->group(function () {
+            Route::get('/', [SiteController::class, 'showAls']);
+            Route::post('/create',[SiteController::class,'createAls']);
+            Route::post('/update/{id}',[SiteController::class,'updateAls']);
+            Route::get('/delete/{id}',[SiteController::class,'deleteAls']);
         });
         Route::prefix('collaboration')->group(function () {
             Route::get('/', [SiteController::class, 'showCollaboration']);

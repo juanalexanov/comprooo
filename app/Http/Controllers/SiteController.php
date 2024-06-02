@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aboutus;
+use App\Models\Als;
 use App\Models\Card;
 use App\Models\Carousel;
 use App\Models\Collaboration;
@@ -42,6 +43,11 @@ class SiteController extends Controller
         $data = Ourservices::where('id',$id)->first();
         return response()->file(storage_path('/app/'.$data->url_image));
     }
+    public function getPhotoAls($id)
+    {
+        $data = Als::where('id',$id)->first();
+        return response()->file(storage_path('/app/'.$data->url_image));
+    }
 
     public function getPhotoCollaboration($id)
     {
@@ -61,6 +67,7 @@ class SiteController extends Controller
         $dataourworkjudul = JudulOurWork::all();
         $datacollaboration = Collaboration::all();
         $dataourservicesjudul = JudulOurService::all();
+        $dataals = Als::all();
 
         foreach ($datacarousel as $key) {
             $key->url_image = env('APP_URL').'/carousel/'.$key->id;
@@ -78,12 +85,16 @@ class SiteController extends Controller
             $key->url_image = env('APP_URL').'/ourservices/'.$key->id;
         }
 
+        foreach ($dataals as $key) {
+            $key->url_image = env('APP_URL').'/als/'.$key->id;
+        }
+
         foreach ($datacollaboration as $key) {
             $key->url_image = env('APP_URL').'/ourcollaboration/'.$key->id;
         }
 
         return view('index',compact('datacarousel','datacontact','dataourwork','dataourservices','datacard','dataaboutus','datacardjudul',
-        'dataaboutusjudul','dataourworkjudul','dataourservicesjudul','datacollaboration'));
+        'dataaboutusjudul','dataourworkjudul','dataourservicesjudul','datacollaboration','dataals'));
     }
 
     public function form_login(Request $request){
@@ -183,6 +194,53 @@ class SiteController extends Controller
             // No Judulcard was found with the given ID, handle the error
             return redirect()->back()->with('error', 'Data tidak ditemukan');
         }
+    }
+
+    public function showAls(){
+        $dataals = Als::get();
+        foreach ($dataals as $key) {
+            $key->url_image = env('APP_URL').'/als/'.$key->id;
+        }
+        return view('admin_utility_als',compact('dataals'));
+    }
+
+    public function createAls(Request $request){
+        $input = $request->all();
+        $count = Als::max('id')+1;
+        if($request->hasFile('imagefile')){
+            // $saveFile = 'als_'.$count.'.jpg';
+            $saveFile = 'als'.$count.'.'.$request->file('imagefile')->getClientOriginalExtension();
+            $path = $request->file('imagefile')->storeAs('/public/Als', $saveFile);
+        }
+        Als::create([
+            'url_image' => $path,
+        ]);
+        return redirect()->back();
+    }
+
+    public function updateAls(Request $request, $id){
+        // dd($request->hasFile('imagefilemodal'));
+        $data = Als::find($id);
+        if($request->hasFile('imagefilemodal')){
+            // $saveFile = 'als'.$count.'.'.$request->file('imagefile')->getClientOriginalExtension();
+            $saveFile = 'als'.$id.'.'.$request->file('imagefilemodal')->getClientOriginalExtension();
+            $path = $request->file('imagefilemodal')->storeAs('/public/Als', $saveFile);
+            $data->url_image = $path;
+        }
+        $data->save();
+        return redirect()->back()->with('success','Data berhasil diubah');
+    }
+
+    public function deleteAls($id){
+        $data = Als::find($id);
+        if(Storage::exists($data->url_image)){
+            Storage::delete($data->url_image);
+            $data->delete();
+        }else{
+            dd('File does not exists.');
+        }
+        Als::destroy($id);
+        return redirect()->back()->with('success','Data berhasil dihapus');
     }
 
 

@@ -58,6 +58,7 @@
                 <a class="collapse-item" href="{{ url('/admin/cms/card') }}">Edit Our Product</a>
                 <a class="collapse-item" href="{{ url('/admin/cms/ourservices') }}">Edit Our Service</a>
                 <a class="collapse-item" href="{{ url('/admin/cms/ourwork') }}">Edit Our Work</a>
+                <a class="collapse-item" href="{{ url('/admin/cms/als') }}">Edit All License Software</a>
                 <a class="collapse-item" href="{{ url('/admin/cms/contact') }}">Edit Contact</a>
                 <a class="collapse-item" href="{{ url('/admin/cms/collaboration') }}">Edit Collaboration</a>
             </div>
